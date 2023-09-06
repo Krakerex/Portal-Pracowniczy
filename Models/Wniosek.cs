@@ -11,13 +11,10 @@ public partial class Wniosek
     [Key]
     public int Id { get; set; }
 
-    [StringLength(30)]
-    [Unicode(false)]
-    public string? Plik { get; set; }
+    public byte[]? Plik { get; set; }
 
-    [StringLength(30)]
     [Unicode(false)]
-    public string Nazwa { get; set; } = null!;
+    public string? Nazwa { get; set; }
 
     [Column("Id_Osoby_Zglaszajacej")]
     public int? IdOsobyZglaszajacej { get; set; }

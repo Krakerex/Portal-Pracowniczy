@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace krzysztofb.Models;
 
@@ -32,15 +34,15 @@ public partial class Uzytkownik
     public virtual Uzytkownik? IdPrzelozonegoNavigation { get; set; }
 
     [InverseProperty("IdPrzelozonegoNavigation")]
-    public virtual ICollection<Uzytkownik> InverseIdPrzelozonegoNavigation { get; } = new List<Uzytkownik>();
+    public virtual ICollection<Uzytkownik> InverseIdPrzelozonegoNavigation { get; set; } = new List<Uzytkownik>();
 
     [ForeignKey("Role")]
     [InverseProperty("Uzytkownik")]
     public virtual Role? RoleNavigation { get; set; }
 
     [InverseProperty("IdOsobyAkceptujacejNavigation")]
-    public virtual ICollection<Wniosek> WniosekIdOsobyAkceptujacejNavigation { get; } = new List<Wniosek>();
+    public virtual ICollection<Wniosek> WniosekIdOsobyAkceptujacejNavigation { get; set; } = new List<Wniosek>();
 
     [InverseProperty("IdOsobyZglaszajacejNavigation")]
-    public virtual ICollection<Wniosek> WniosekIdOsobyZglaszajacejNavigation { get; } = new List<Wniosek>();
+    public virtual ICollection<Wniosek> WniosekIdOsobyZglaszajacejNavigation { get; set; } = new List<Wniosek>();
 }

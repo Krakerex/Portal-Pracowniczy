@@ -15,6 +15,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<WnioskiContext>();
 builder.Services.AddScoped<UserTable>();
+builder.Services.AddScoped<WniosekTable>();
+builder.Services.AddScoped<MemoryStream>();
 
 var app = builder.Build();
 

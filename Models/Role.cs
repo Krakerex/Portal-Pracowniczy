@@ -16,5 +16,5 @@ public partial class Role
     public string Nazwa { get; set; } = null!;
 
     [InverseProperty("RoleNavigation")]
-    public virtual ICollection<Uzytkownik> Uzytkownik { get; } = new List<Uzytkownik>();
+    public virtual ICollection<Uzytkownik> Uzytkownik { get; set; } = new List<Uzytkownik>();
 }
