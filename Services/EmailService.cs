@@ -1,11 +1,12 @@
 ﻿using krzysztofb.Configuration;
+using krzysztofb.Email;
 using krzysztofb.Interfaces;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
 
-namespace krzysztofb.Email
+namespace krzysztofb.Services
 {
     public class EmailService : IEmailService
     {
