@@ -1,7 +1,6 @@
 ﻿using krzysztofb.Models;
 using krzysztofb.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace krzysztofb.Controllers
 {
@@ -32,6 +31,7 @@ namespace krzysztofb.Controllers
         public async Task<FileResult> GetWniosek(int id)
         {
             var file = new FileContentResult(_wniosekTable.Read(id).Plik, "application/pdf");
+            file.FileDownloadName = _wniosekTable.Read(id).Nazwa;
             return await Task.Run(() => file);
 
 
@@ -39,62 +39,31 @@ namespace krzysztofb.Controllers
 
         // PUT: api/Wnioseks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutWniosek(int id, Wniosek wniosek)
+        [HttpPut("{idWniosek},{idKierownik}")]
+        public async Task<ActionResult<WniosekDTO>> PutWniosek(int idWniosek, int idKierownik)
         {
-            if (id != wniosek.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(wniosek).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!WniosekExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            return Task.Run(() => _wniosekTable.Accept(idWniosek, idKierownik)).Result;
         }
 
         // POST: api/Wnioseks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<WniosekDTO>> PostWniosek(IFormFile file)
+        public async Task<ActionResult<WniosekDTO>> PostWniosek(IFormFile file, int idSender)
         {
-
-            return Task.FromResult(_wniosekTable.Create(file)).Result;
+            var wniosek = new WniosekDTO
+            {
+                IdOsobyZglaszajacej = idSender,
+                IdOsobyAkceptujacej = null
+            };
+            wniosek = _wniosekTable.SaveFile(wniosek, file);
+            return Task.FromResult(_wniosekTable.Create(wniosek)).Result;
         }
 
         // DELETE: api/Wnioseks/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteWniosek(int id)
+        public async Task<ActionResult<WniosekDTO>> DeleteWniosek(int id)
         {
-            if (_context.Wniosek == null)
-            {
-                return NotFound();
-            }
-            var wniosek = await _context.Wniosek.FindAsync(id);
-            if (wniosek == null)
-            {
-                return NotFound();
-            }
-
-            _context.Wniosek.Remove(wniosek);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return Task.Run(() => _wniosekTable.Delete(id)).Result;
         }
 
         private bool WniosekExists(int id)

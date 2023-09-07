@@ -1,4 +1,7 @@
 using krzysztofb;
+using krzysztofb.Configuration;
+using krzysztofb.Email;
+using krzysztofb.Interfaces;
 using krzysztofb.Models;
 using System.Text.Json.Serialization;
 
@@ -17,6 +20,8 @@ builder.Services.AddDbContext<WnioskiContext>();
 builder.Services.AddScoped<UserTable>();
 builder.Services.AddScoped<WniosekTable>();
 builder.Services.AddScoped<MemoryStream>();
+builder.Services.AddTransient<IEmailService, EmailService>();
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
 
 var app = builder.Build();
 

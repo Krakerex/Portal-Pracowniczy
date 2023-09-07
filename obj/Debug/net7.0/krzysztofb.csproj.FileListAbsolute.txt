@@ -254,3 +254,8 @@ C:\Users\ipkrzbli\Source\Repos\krzysztofb\bin\Debug\net7.0\runtimes\win\lib\net6
 C:\Users\ipkrzbli\Source\Repos\krzysztofb\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\ipkrzbli\Source\Repos\krzysztofb\obj\Debug\net7.0\krzysztofb.RazorAssemblyInfo.cache
 C:\Users\ipkrzbli\Source\Repos\krzysztofb\obj\Debug\net7.0\krzysztofb.RazorAssemblyInfo.cs
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\MailKit.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\MimeKit.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll

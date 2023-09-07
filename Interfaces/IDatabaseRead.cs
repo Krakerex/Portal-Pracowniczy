@@ -1,9 +1,9 @@
 ﻿namespace krzysztofb.Interfaces
 {
-    public interface IDatabaseRead<T2, T>
+    public interface IDatabaseRead<T>
     {
         public List<T> Read();
-        public T2 Read(int id);
+        public T Read(int id);
 
     }
 }

@@ -6,8 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace krzysztofb
 {
     public class UserTable :
-        IDatabaseCreate<UzytkownikDTO>,
-        IDatabaseRead<UzytkownikDTO, UzytkownikDTO>,
+        IDatabaseRead<UzytkownikDTO>,
         IDatabaseUpdate<UzytkownikDTO>,
         IDatabaseDelete<UzytkownikDTO>,
         IModelConverter<Uzytkownik, UzytkownikDTO>

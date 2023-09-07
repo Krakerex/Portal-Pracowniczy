@@ -1,4 +1,5 @@
-﻿using krzysztofb.Interfaces;
+﻿using krzysztofb.Email;
+using krzysztofb.Interfaces;
 using krzysztofb.Models;
 using krzysztofb.Models.DTO;
 using Microsoft.EntityFrameworkCore;
@@ -7,18 +8,23 @@ namespace krzysztofb
 {
     public class WniosekTable :
 
-        IDatabaseRead<WniosekDTO, WniosekDTO>,
+        IDatabaseRead<WniosekDTO>,
         IDatabaseUpdate<WniosekDTO>,
         IDatabaseDelete<WniosekDTO>,
-        IDatabaseFileCreate<WniosekDTO>,
-        IModelConverter<Wniosek, WniosekDTO>
+        IModelConverter<Wniosek, WniosekDTO>,
+        IDatabaseCreate<WniosekDTO>
     {
         private readonly WnioskiContext _context;
         private readonly MemoryStream _memoryStream;
-        public WniosekTable(WnioskiContext context, MemoryStream memoryStream)
+        private readonly UserTable _userTable;
+        IEmailService _emailService = null;
+        public WniosekTable(WnioskiContext context, MemoryStream memoryStream, UserTable userTable, IEmailService emailService)
         {
             _context = context;
             _memoryStream = memoryStream;
+            _userTable = userTable;
+            _emailService = emailService;
+
         }
         public static WniosekDTO ConvertToDTO(Wniosek wniosek)
         {
@@ -45,24 +51,40 @@ namespace krzysztofb
         }
 
 
-        public WniosekDTO Create(IFormFile file)
+        public WniosekDTO SaveFile(WniosekDTO wniosek, IFormFile file)
         {
             file.CopyToAsync(_memoryStream);
-            var wniosek = new WniosekDTO
-            {
-                Nazwa = file.FileName,
-                Plik = _memoryStream.ToArray(),
-                IdOsobyZglaszajacej = 1,
-                IdOsobyAkceptujacej = 1
-            };
+            wniosek.Nazwa = file.FileName;
+            wniosek.Plik = _memoryStream.ToArray();
             _context.Wniosek.Add(ConvertToModel(wniosek));
             _context.SaveChanges();
             return wniosek;
         }
 
+        public WniosekDTO Create(WniosekDTO obj)
+        {
+            _context.Wniosek.Add(ConvertToModel(obj));
+            _context.SaveChanges();
+            return obj;
+        }
+
         public WniosekDTO Delete(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var wniosek = _context.Wniosek.Find(id);
+                if (wniosek == null)
+                {
+                    throw new NullReferenceException();
+                }
+                _context.Wniosek.Remove(wniosek);
+                _context.SaveChanges();
+                return ConvertToDTO(wniosek);
+            }
+            catch (NullReferenceException)
+            {
+                throw new NullReferenceException("Wniosek not found");
+            }
         }
 
         public List<WniosekDTO> Read()
@@ -90,6 +112,43 @@ namespace krzysztofb
         public WniosekDTO Update(int id, WniosekDTO obj)
         {
             throw new NotImplementedException();
+        }
+        public WniosekDTO Accept(int idWniosek, int idKierownik)
+        {
+            var wniosek = _context.Wniosek.Find(idWniosek);
+            if (wniosek == null)
+            {
+                throw new NullReferenceException();
+            }
+            wniosek.IdOsobyAkceptujacej = idKierownik;
+            UzytkownikDTO osobaZglaszajaca = _userTable.Read((int)wniosek.IdOsobyZglaszajacej);
+            UzytkownikDTO osobaAkceptujaca = _userTable.Read((int)wniosek.IdOsobyAkceptujacej);
+            UzytkownikDTO przelozony = _userTable.Read((int)osobaZglaszajaca.IdPrzelozonego);
+            var stream = new MemoryStream(wniosek.Plik);
+            IFormFile file = new FormFile(stream, 0, wniosek.Plik.Length, wniosek.Nazwa, wniosek.Nazwa)
+            {
+                Headers = new HeaderDictionary(),
+                ContentType = "application/pdf",
+                ContentDisposition = "attachment"
+            };
+
+
+            IFormFileCollection attachments = new FormFileCollection() { file };
+            EmailDataWithAttachment email = new EmailDataWithAttachment
+            {
+                EmailToId = osobaZglaszajaca.Email,
+                EmailToName = osobaZglaszajaca.Imie + " " + osobaZglaszajaca.Nazwisko,
+                EmailBody = "Wniosek o nazwie: " + wniosek.Nazwa +
+           "\n Użytkownika: " + osobaZglaszajaca.Imie + " " + osobaZglaszajaca.Nazwisko +
+           "\n Został zaakceptowany przez: " + osobaAkceptujaca.Imie + " " + osobaAkceptujaca.Nazwisko,
+                EmailSubject = "Wniosek " + osobaZglaszajaca.Imie + " " + osobaZglaszajaca.Nazwisko + " został zaakceptowany",
+                EmailAttachments = attachments
+
+            };
+            _emailService.SendEmailWithAttachment(email);
+            _context.SaveChanges();
+
+            return ConvertToDTO(wniosek);
         }
     }
 }
