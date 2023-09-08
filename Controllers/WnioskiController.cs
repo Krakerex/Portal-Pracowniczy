@@ -38,6 +38,7 @@ namespace krzysztofb.Controllers
         [HttpPut("{idWniosek},{idKierownik}")]
         public WniosekDTO PutWniosek(int idWniosek, int idKierownik)
         {
+            Response.StatusCode = 201;
             return _wniosekServices.Accept(idWniosek, idKierownik);
         }
 
@@ -52,6 +53,7 @@ namespace krzysztofb.Controllers
                 IdOsobyAkceptujacej = null
             };
             wniosek = _wniosekServices.AddFile(wniosek, file);
+            Response.StatusCode = 201;
             return _wniosekServices.Create(wniosek);
         }
 
@@ -59,6 +61,7 @@ namespace krzysztofb.Controllers
         [HttpDelete("{id}")]
         public WniosekDTO DeleteWniosek(int id)
         {
+            Response.StatusCode = 200;
             return _wniosekServices.Delete(id);
         }
     }

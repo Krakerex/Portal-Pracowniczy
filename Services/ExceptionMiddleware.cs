@@ -72,9 +72,6 @@
                     Time = DateTime.UtcNow
 
                 };
-
-
-
                 await context.Response.WriteAsync(JsonSerializer.Serialize(errorResponse));
             }
         }

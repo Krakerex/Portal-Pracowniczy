@@ -32,6 +32,7 @@ namespace krzysztofb.Controllers
         [HttpPut("{id}")]
         public UzytkownikDTO PutUzytkownik(int id, UzytkownikDTO uzytkownik)
         {
+            Response.StatusCode = 201;
             return _uzytkownikService.Update(id, uzytkownik);
         }
 
@@ -40,6 +41,8 @@ namespace krzysztofb.Controllers
         [HttpPost]
         public UzytkownikDTO PostUzytkownik(UzytkownikDTO uzytkownik)
         {
+            Response.StatusCode = 201;
+
             return _uzytkownikService.Create(uzytkownik);
         }
         // DELETE: api/Uzytkowniks/5

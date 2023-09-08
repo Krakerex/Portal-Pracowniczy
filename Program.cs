@@ -28,11 +28,10 @@ builder.Services.AddLogging(config =>
     config.AddDebug();
 }
 );
-
+//add serilog logger
 
 var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
