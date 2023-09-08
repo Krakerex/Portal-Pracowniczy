@@ -10,7 +10,7 @@ namespace krzysztofb.Email
             return new EmailDataWniosek
             {
                 EmailToId = przelozony.Email,
-                EmailToName = osobaZglaszajaca.Imie + " " + osobaZglaszajaca.Nazwisko,
+                EmailToName = przelozony.Imie + " " + przelozony.Nazwisko,
                 EmailBody = "Wniosek o nazwie: " + wniosek.Nazwa +
            "\n Użytkownika: " + osobaZglaszajaca.Imie + " " + osobaZglaszajaca.Nazwisko +
            "\n Został zaakceptowany przez: " + osobaAkceptujaca.Imie + " " + osobaAkceptujaca.Nazwisko,
