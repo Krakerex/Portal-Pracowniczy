@@ -28,6 +28,10 @@ namespace krzysztofb.Services
 
         public WniosekDTO AddFile(WniosekDTO wniosek, IFormFile file)
         {
+            if (file == null)
+            {
+                throw new BadHttpRequestException("File not found");
+            }
             file.CopyToAsync(_memoryStream);
             wniosek.Nazwa = file.FileName;
             wniosek.Plik = _memoryStream.ToArray();
@@ -45,6 +49,11 @@ namespace krzysztofb.Services
         public WniosekDTO Delete(int id)
         {
             var wniosek = _context.Wniosek.Find(id);
+            if (wniosek == null)
+            {
+                throw new BadHttpRequestException("Wniosek not found");
+            }
+
             _context.Wniosek.Remove(wniosek);
             _context.SaveChanges();
             return ModelConverter.ConvertToDTO(wniosek);
@@ -62,9 +71,24 @@ namespace krzysztofb.Services
         }
         public WniosekDTO Accept(int idWniosek, int idKierownik)
         {
+            //check if user with idKierownik has role Kierownik
             var wniosek = _context.Wniosek.Find(idWniosek);
+            var kierownik = _context.Uzytkownik.Find(idKierownik);
+            if (kierownik == null)
+            {
+                throw new BadHttpRequestException("Kierownik not found");
+            }
+            else if (kierownik.Role != 2)
+            {
+                throw new BadHttpRequestException("User is not Kierownik");
+            }
+            else if (wniosek == null)
+            {
+                throw new BadHttpRequestException("Wniosek not found");
+            }
+
             UzytkownikDTO osobaZglaszajaca = _uzytkownikService.Read(wniosek.IdOsobyZglaszajacej.Value);
-            UzytkownikDTO osobaAkceptujaca = _uzytkownikService.Read(wniosek.IdOsobyAkceptujacej.Value);
+            UzytkownikDTO osobaAkceptujaca = _uzytkownikService.Read(idKierownik);
             UzytkownikDTO przelozony = _uzytkownikService.Read(osobaZglaszajaca.IdPrzelozonego.Value);
             var file = ReadFile(idWniosek);
             IFormFileCollection attachments = new FormFileCollection() { file };
@@ -77,6 +101,10 @@ namespace krzysztofb.Services
         public IFormFile ReadFile(int id)
         {
             var wniosek = _context.Wniosek.Find(id);
+            if (wniosek == null)
+            {
+                throw new BadHttpRequestException("Wniosek not found");
+            }
             var stream = new MemoryStream(wniosek.Plik);
             IFormFile file = new FormFile(stream, 0, wniosek.Plik.Length, wniosek.Nazwa, wniosek.Nazwa)
             {
@@ -88,6 +116,7 @@ namespace krzysztofb.Services
         }
         public FileResult DownloadFile(int id)
         {
+
             byte[] file;
             var wniosek = ReadFile(id);
             using (MemoryStream memoryStream = new MemoryStream())

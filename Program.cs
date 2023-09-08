@@ -2,6 +2,7 @@ using krzysztofb.Configuration;
 using krzysztofb.Interfaces;
 using krzysztofb.Models;
 using krzysztofb.Services;
+using krzysztofb.Services.Request.Exceptions;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,8 +22,17 @@ builder.Services.AddScoped<WniosekService>();
 builder.Services.AddScoped<MemoryStream>();
 builder.Services.AddTransient<IEmailService, EmailService>();
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddLogging(config =>
+{
+    config.AddConsole();
+    config.AddDebug();
+}
+);
+
 
 var app = builder.Build();
+app.UseMiddleware<ExceptionMiddleware>();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
