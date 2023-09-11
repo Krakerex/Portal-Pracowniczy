@@ -1,6 +1,5 @@
 ﻿using krzysztofb.Models;
 using krzysztofb.Models.DTO;
-using krzysztofb.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace krzysztofb.Services
@@ -129,20 +128,14 @@ namespace krzysztofb.Services
                 throw new DbUpdateException("Podany email już istnieje w bazie danych");
             }
             var user = _context.Uzytkownik.Find(id);
-            //check every property and update it if its not null in obj
-            user.Imie = obj.Imie ?? user.Imie;
-            user.Nazwisko = obj.Nazwisko ?? user.Nazwisko;
-            user.Email = obj.Email ?? user.Email;
-            user.Role = obj.Role ?? user.Role;
-            user.IdPrzelozonego = obj.IdPrzelozonego ?? user.IdPrzelozonego;
-            _context.Uzytkownik.Update(user);
-            /*foreach (var propetryEntry in _context.Entry(user).Properties)
+
+            foreach (var propetryEntry in _context.Entry(user).Properties)
             {
                 if (propetryEntry.Metadata.Name != "Id")
                 {
                     propetryEntry.CurrentValue = obj.GetType().GetProperty(propetryEntry.Metadata.Name).GetValue(obj);
                 }
-            }*/
+            }
             _context.SaveChanges();
             return obj;
 
