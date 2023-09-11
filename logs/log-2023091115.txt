@@ -1,0 +1,22 @@
+2023-09-11 15:01:24.905 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 136209.296ms
+2023-09-11 15:01:24.916 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 15:01:25.003 +02:00 [ERR] {"Id":0,"IdWniosku":0,"NrEwidencyjny":9999,"IloscDni":5,"PoczatekUrlopu":"2023-09-10T22:00:00Z","KoniecUrlopu":"2023-09-10T22:00:00Z","DataWypelnienia":"2023-09-04T22:00:00Z"}
+2023-09-11 15:01:25.094 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundarybOKl2S8w65xPgC1u 936571 - 500 - application/json 136437.0317ms
+2023-09-11 15:01:29.672 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryGveLmV7pfRuOWmrJ 936571
+2023-09-11 15:01:29.679 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 15:01:29.685 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 15:01:29.762 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 15:02:24.134 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 54444.1551ms
+2023-09-11 15:02:24.136 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 15:02:24.195 +02:00 [ERR] {"Id":0,"IdWniosku":0,"NrEwidencyjny":9999,"IloscDni":5,"PoczatekUrlopu":"2023-09-10T22:00:00Z","KoniecUrlopu":"2023-09-10T22:00:00Z","DataWypelnienia":"2023-09-04T22:00:00Z"}
+2023-09-11 15:02:24.199 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryGveLmV7pfRuOWmrJ 936571 - 500 - application/json 54527.4202ms
+2023-09-11 15:02:28.565 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryI25gHpftCEAWLCQn 936571
+2023-09-11 15:02:28.568 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 15:02:28.580 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 15:02:28.665 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1

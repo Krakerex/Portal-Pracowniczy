@@ -268,3 +268,15 @@ C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\Serilog.Settings.Conf
 C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\Serilog.Sinks.Console.dll
 C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\Serilog.Sinks.Debug.dll
 C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\Serilog.Sinks.File.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\itext.barcodes.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\itext.bouncy-castle-connector.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\itext.forms.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\itext.io.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\itext.kernel.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\itext.layout.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\itext.pdfa.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\itext.sign.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\itext.styledxmlparser.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\itext.svg.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\itext.commons.dll
+C:\Users\ipkrzbli\source\repos\krzysztofb\bin\Debug\net7.0\Microsoft.DotNet.PlatformAbstractions.dll

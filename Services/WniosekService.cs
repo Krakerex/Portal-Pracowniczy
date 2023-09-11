@@ -1,9 +1,13 @@
-﻿using krzysztofb.Email;
+﻿using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Canvas.Parser;
+using krzysztofb.Email;
 using krzysztofb.Models;
 using krzysztofb.Models.DTO;
 using krzysztofb.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol;
+using System.Globalization;
 
 namespace krzysztofb.Services
 {
@@ -14,6 +18,7 @@ namespace krzysztofb.Services
         IDatabaseDelete<WniosekDTO>,
         IDatabaseCreate<WniosekDTO>,
         IDatabaseFileSave<WniosekDTO>,
+        IPdfToDatabase,
         IDatabaseFileRead
     {
         private readonly WnioskiContext _context;
@@ -37,6 +42,10 @@ namespace krzysztofb.Services
         /// <exception cref="BadHttpRequestException"></exception>
         public WniosekDTO AddFile(WniosekDTO wniosek, IFormFile file)
         {
+            if (file.FileName.Contains(".pdf") == true)
+            {
+                CheckPDFType(file);
+            }
             if (file == null)
             {
                 throw new BadHttpRequestException("Brak pliku");
@@ -170,6 +179,62 @@ namespace krzysztofb.Services
             FileResult fileResult = new FileContentResult(file, "application/pdf");
             fileResult.FileDownloadName = wniosek.FileName;
             return fileResult;
+        }
+
+        public string CheckPDFType(IFormFile file)
+        {
+
+            file.CopyToAsync(_memoryStream);
+            //convert file to System.IO.FIleInfo
+            FileInfo fileInfo = new FileInfo(file.FileName);
+            PdfReader reader = new PdfReader(fileInfo);
+
+            PdfDocument doc = new PdfDocument(reader);
+            string text = PdfTextExtractor.GetTextFromPage(doc.GetPage(1));
+            doc.Close();
+            var document = new StringReader(text);
+            WniosekUrlopDTO wniosekUrlop = new WniosekUrlopDTO();
+            string[] imieNazwisko = new string[2];
+            string line = "";
+            string previousLine = "";
+            DateTime date;
+            while ((line = document.ReadLine()) != null)
+            {
+                if (line.Contains("(nazwisko i imię)"))
+                {
+                    wniosekUrlop.NrEwidencyjny = Int32.Parse(previousLine.Split(" Nr ewid.")[1]);
+                    imieNazwisko = previousLine.Split(" Nr ewid.")[0].Split(" ");
+                }
+                else if (line.Contains("w ilości"))
+                {
+                    wniosekUrlop.IloscDni = Int32.Parse(line.Split("w ilości ")[1].Split(" dni.")[0]);
+                }
+                else if (line.Contains("Elbląg, dnia "))
+                {
+                    wniosekUrlop.DataWypelnienia = DateTime.Parse(line.Split("Elbląg, dnia ")[1]);
+                }
+                else if (line.Contains("Od dnia"))
+                {
+                    wniosekUrlop.PoczatekUrlopu = DateTime.ParseExact(line.Split("Od dnia ")[1].Split(" Do dnia ")[0].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
+                    date = DateTime.ParseExact(line.Split("Od dnia ")[1].Split(" Do dnia ")[0].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
+                    wniosekUrlop.PoczatekUrlopu = date;
+                    wniosekUrlop.KoniecUrlopu = DateTime.ParseExact(line.Split("Do dnia ")[1].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
+
+                }
+                else
+                {
+                    previousLine = line;
+                }
+            }
+            //split name string to get Nr ewid.
+
+            //check if user with given name exists in database
+            if (_context.Uzytkownik.Where(x => x.Imie == imieNazwisko[0] && x.Nazwisko == imieNazwisko[1]).FirstOrDefault() == null)
+            {
+                throw new BadHttpRequestException("Użytkownik o podanym imieniu i nazwisku nie istnieje");
+            }
+            throw new Exception(wniosekUrlop.ToJson());
+
         }
     }
 }

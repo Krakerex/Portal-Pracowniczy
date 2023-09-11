@@ -1,0 +1,352 @@
+2023-09-11 13:04:58.931 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:04:58.985 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 54.5301ms
+2023-09-11 13:04:59.218 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:04:59.218 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:04:59.220 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 2.2172ms
+2023-09-11 13:04:59.232 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 14.3662ms
+2023-09-11 13:04:59.320 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:04:59.331 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 10.7808ms
+2023-09-11 13:05:21.002 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryjDACArrH27dmhskC 936571
+2023-09-11 13:05:21.017 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:05:21.023 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:05:25.010 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 3982.539ms
+2023-09-11 13:05:25.012 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:05:25.070 +02:00 [ERR]   9999 
+2023-09-11 13:05:25.074 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryjDACArrH27dmhskC 936571 - 500 - application/json 4071.7145ms
+2023-09-11 13:06:39.386 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:06:39.406 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 20.2718ms
+2023-09-11 13:06:39.453 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:06:39.453 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:06:39.455 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 2.0377ms
+2023-09-11 13:06:39.477 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 23.6842ms
+2023-09-11 13:06:39.717 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:06:39.722 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 5.8243ms
+2023-09-11 13:07:06.911 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryOaT4CPXEJC7cD3wa 936571
+2023-09-11 13:07:06.921 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:07:06.925 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:09:39.512 +02:00 [INF] Now listening on: https://localhost:7128
+2023-09-11 13:09:39.569 +02:00 [INF] Now listening on: http://localhost:5213
+2023-09-11 13:09:39.572 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-09-11 13:09:39.579 +02:00 [INF] Hosting environment: Development
+2023-09-11 13:09:39.586 +02:00 [INF] Content root path: C:\Users\ipkrzbli\source\repos\krzysztofb
+2023-09-11 13:09:40.240 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:09:40.494 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:09:40.496 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 258.5436ms
+2023-09-11 13:09:40.503 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 9.2474ms
+2023-09-11 13:09:40.512 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:09:40.547 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 34.8766ms
+2023-09-11 13:09:40.638 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:09:40.771 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 133.5267ms
+2023-09-11 13:09:47.971 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary4fi4uGlsDovkBliQ 560
+2023-09-11 13:09:47.984 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:09:48.003 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:09:49.326 +02:00 [INF] Executed DbCommand (32ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-11 13:09:49.581 +02:00 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 8000) (DbType = AnsiString), @p3='?' (Size = 8000) (DbType = Binary)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Wniosek] ([Id_Osoby_Akceptujacej], [Id_Osoby_Zglaszajacej], [Nazwa], [Plik])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3);
+2023-09-11 13:09:49.626 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Nazwa], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-11 13:09:49.641 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.WniosekDTO'.
+2023-09-11 13:09:49.662 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 1651.3133ms
+2023-09-11 13:09:49.665 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:09:49.675 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary4fi4uGlsDovkBliQ 560 - 201 - application/json;+charset=utf-8 1704.1749ms
+2023-09-11 13:09:57.855 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundarydl7w76DpuBSZwyIS 936571
+2023-09-11 13:09:57.859 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:09:57.863 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:11:08.619 +02:00 [INF] Now listening on: https://localhost:7128
+2023-09-11 13:11:08.720 +02:00 [INF] Now listening on: http://localhost:5213
+2023-09-11 13:11:08.754 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-09-11 13:11:08.756 +02:00 [INF] Hosting environment: Development
+2023-09-11 13:11:08.772 +02:00 [INF] Content root path: C:\Users\ipkrzbli\source\repos\krzysztofb
+2023-09-11 13:11:09.647 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:11:09.968 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:11:09.974 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 332.3212ms
+2023-09-11 13:11:09.988 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:11:09.990 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 22.2646ms
+2023-09-11 13:11:10.017 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 29.0230ms
+2023-09-11 13:11:10.108 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:11:10.262 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 154.1230ms
+2023-09-11 13:11:17.849 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryWRwR2Ytd9IghDEAO 936571
+2023-09-11 13:11:17.860 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:11:17.878 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:23:21.711 +02:00 [INF] Now listening on: https://localhost:7128
+2023-09-11 13:23:21.763 +02:00 [INF] Now listening on: http://localhost:5213
+2023-09-11 13:23:21.766 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-09-11 13:23:21.767 +02:00 [INF] Hosting environment: Development
+2023-09-11 13:23:21.768 +02:00 [INF] Content root path: C:\Users\ipkrzbli\source\repos\krzysztofb
+2023-09-11 13:23:23.035 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:23:23.291 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:23:23.294 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 263.2424ms
+2023-09-11 13:23:23.302 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 11.0406ms
+2023-09-11 13:23:23.309 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:23:23.335 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 25.9413ms
+2023-09-11 13:23:23.417 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:23:23.551 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 134.3331ms
+2023-09-11 13:23:32.385 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryJNHOYAvBwkdMAjH8 936571
+2023-09-11 13:23:32.397 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:23:32.415 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:23:33.964 +02:00 [INF] Executed DbCommand (39ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:23:42.047 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 9624.603ms
+2023-09-11 13:23:42.051 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:23:42.124 +02:00 [ERR] Index was outside the bounds of the array.
+2023-09-11 13:23:42.149 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryJNHOYAvBwkdMAjH8 936571 - 500 - application/json 9764.1213ms
+2023-09-11 13:23:53.300 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:23:53.325 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 25.3991ms
+2023-09-11 13:23:53.363 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:23:53.363 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:23:53.366 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 3.8562ms
+2023-09-11 13:23:53.384 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 21.4774ms
+2023-09-11 13:23:53.464 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:23:53.482 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 17.5725ms
+2023-09-11 13:24:08.075 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryVBvpiKPEq43k8xP9 936571
+2023-09-11 13:24:08.088 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:24:08.095 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:24:08.174 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:24:11.738 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 3638.9684ms
+2023-09-11 13:24:11.740 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:24:11.797 +02:00 [ERR] Index was outside the bounds of the array.
+2023-09-11 13:24:11.801 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryVBvpiKPEq43k8xP9 936571 - 500 - application/json 3725.3012ms
+2023-09-11 13:24:16.230 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryjBLfjs76XixANzBp 936571
+2023-09-11 13:24:16.235 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:24:16.238 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:24:16.319 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:24:21.275 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 5033.0438ms
+2023-09-11 13:24:21.277 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:24:21.328 +02:00 [ERR] Index was outside the bounds of the array.
+2023-09-11 13:24:21.331 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryjBLfjs76XixANzBp 936571 - 500 - application/json 5100.8132ms
+2023-09-11 13:24:30.638 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:24:30.656 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 18.0559ms
+2023-09-11 13:24:30.702 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:24:30.702 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:24:30.708 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 6.4492ms
+2023-09-11 13:24:30.716 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 14.7316ms
+2023-09-11 13:24:30.815 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:24:30.827 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 12.2766ms
+2023-09-11 13:24:45.389 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary17SigM1ZIvT7mbtw 936571
+2023-09-11 13:24:45.393 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:24:45.397 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:25:00.490 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 15088.8309ms
+2023-09-11 13:25:00.493 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:25:00.551 +02:00 [ERR] C:\Users\ipkrzbli\source\repos\krzysztofb\zadanie 2.pdf not found as file or resource.
+2023-09-11 13:25:00.554 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary17SigM1ZIvT7mbtw 936571 - 500 - application/json 15164.0595ms
+2023-09-11 13:25:19.412 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryAN8RYcLwtW0eVMMS 936571
+2023-09-11 13:25:19.431 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:25:19.434 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:25:19.461 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:25:22.829 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 3392.0485ms
+2023-09-11 13:25:22.831 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:25:22.889 +02:00 [ERR] Index was outside the bounds of the array.
+2023-09-11 13:25:22.891 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryAN8RYcLwtW0eVMMS 936571 - 500 - application/json 3479.3415ms
+2023-09-11 13:25:33.901 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:25:33.916 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 15.0290ms
+2023-09-11 13:25:33.950 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:25:33.950 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:25:33.954 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 4.8557ms
+2023-09-11 13:25:33.961 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.3770ms
+2023-09-11 13:25:34.068 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:25:34.075 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 7.0961ms
+2023-09-11 13:25:52.649 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryVUILqMV8P8pZDffv 936571
+2023-09-11 13:25:52.652 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:25:52.657 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:25:52.690 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:25:58.637 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 5976.8786ms
+2023-09-11 13:25:58.640 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:25:58.708 +02:00 [ERR] 
+2023-09-11 13:25:58.711 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryVUILqMV8P8pZDffv 936571 - 500 - application/json 6062.5692ms
+2023-09-11 13:26:53.218 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:26:53.240 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 21.9870ms
+2023-09-11 13:26:53.273 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:26:53.273 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:26:53.279 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 5.7166ms
+2023-09-11 13:26:53.290 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 17.3191ms
+2023-09-11 13:26:53.379 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:26:53.387 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 7.9858ms
+2023-09-11 13:27:02.401 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryUl0AX2OvzfvtuZwz 936571
+2023-09-11 13:27:02.407 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:27:02.412 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:27:02.445 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:27:06.700 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 4284.0094ms
+2023-09-11 13:27:06.702 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:27:06.760 +02:00 [ERR] 5 dni. 
+2023-09-11 13:27:06.763 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryUl0AX2OvzfvtuZwz 936571 - 500 - application/json 4361.8091ms
+2023-09-11 13:27:24.285 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:27:24.306 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 20.9717ms
+2023-09-11 13:27:24.342 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:27:24.342 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:27:24.346 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 4.4772ms
+2023-09-11 13:27:24.356 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 13.6028ms
+2023-09-11 13:27:24.472 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:27:24.484 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 11.3211ms
+2023-09-11 13:27:38.568 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryjcliHVVzOI2hoVog 936571
+2023-09-11 13:27:38.571 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:27:38.574 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:27:38.614 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:27:41.197 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 2615.0945ms
+2023-09-11 13:27:41.199 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:27:41.263 +02:00 [ERR] 5
+2023-09-11 13:27:41.267 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryjcliHVVzOI2hoVog 936571 - 500 - application/json 2698.9251ms
+2023-09-11 13:44:03.913 +02:00 [INF] Now listening on: https://localhost:7128
+2023-09-11 13:44:04.006 +02:00 [INF] Now listening on: http://localhost:5213
+2023-09-11 13:44:04.018 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-09-11 13:44:04.028 +02:00 [INF] Hosting environment: Development
+2023-09-11 13:44:04.030 +02:00 [INF] Content root path: C:\Users\ipkrzbli\source\repos\krzysztofb
+2023-09-11 13:44:05.295 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:44:05.643 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:44:05.647 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 355.7466ms
+2023-09-11 13:44:05.656 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 13.1537ms
+2023-09-11 13:44:05.663 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:44:05.696 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 32.9301ms
+2023-09-11 13:44:05.863 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:44:06.034 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 170.8997ms
+2023-09-11 13:44:15.872 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundarygsHd23vzA0lk2PBQ 936571
+2023-09-11 13:44:15.883 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:44:15.902 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:44:17.391 +02:00 [INF] Executed DbCommand (31ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:44:52.215 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 36307.1303ms
+2023-09-11 13:44:52.218 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:44:52.294 +02:00 [ERR] krzysztofb.Models.DTO.WniosekUrlopDTO
+2023-09-11 13:44:52.327 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundarygsHd23vzA0lk2PBQ 936571 - 500 - application/json 36455.1167ms
+2023-09-11 13:47:20.390 +02:00 [INF] Now listening on: https://localhost:7128
+2023-09-11 13:47:20.488 +02:00 [INF] Now listening on: http://localhost:5213
+2023-09-11 13:47:20.494 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-09-11 13:47:20.498 +02:00 [INF] Hosting environment: Development
+2023-09-11 13:47:20.499 +02:00 [INF] Content root path: C:\Users\ipkrzbli\source\repos\krzysztofb
+2023-09-11 13:47:21.339 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:47:21.626 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 291.1826ms
+2023-09-11 13:47:21.642 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:47:21.642 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:47:21.662 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 20.2449ms
+2023-09-11 13:47:21.673 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 31.2332ms
+2023-09-11 13:47:21.750 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:47:21.880 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 130.4868ms
+2023-09-11 13:47:32.603 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryBKPDZi9PKWd7URqY 936571
+2023-09-11 13:47:32.614 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:47:32.633 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:47:34.191 +02:00 [INF] Executed DbCommand (36ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:47:37.971 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 5331.9564ms
+2023-09-11 13:47:37.974 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:47:38.051 +02:00 [ERR] System.String[]
+2023-09-11 13:47:38.072 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundaryBKPDZi9PKWd7URqY 936571 - 500 - application/json 5469.0711ms
+2023-09-11 13:48:05.757 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:48:05.778 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 20.4900ms
+2023-09-11 13:48:05.794 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:48:05.794 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:48:05.796 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 2.3667ms
+2023-09-11 13:48:05.812 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 17.1091ms
+2023-09-11 13:48:05.895 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:48:05.906 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 11.1142ms
+2023-09-11 13:48:14.456 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary0Uhhs0oBsuYGsgfk 936571
+2023-09-11 13:48:14.459 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:48:14.465 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:48:14.542 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:48:18.350 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 3878.6353ms
+2023-09-11 13:48:18.352 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:48:18.406 +02:00 [ERR]  i 
+2023-09-11 13:48:18.411 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary0Uhhs0oBsuYGsgfk 936571 - 500 - application/json 3954.5319ms
+2023-09-11 13:49:22.226 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:49:22.244 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 18.1213ms
+2023-09-11 13:49:22.276 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:49:22.276 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:49:22.279 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 3.1851ms
+2023-09-11 13:49:22.299 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 23.0964ms
+2023-09-11 13:49:22.409 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:49:22.417 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 7.0063ms
+2023-09-11 13:49:31.355 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundarytWpj6yBewdYWel2f 936571
+2023-09-11 13:49:31.365 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:49:31.371 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:49:31.457 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:49:38.368 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 6992.97ms
+2023-09-11 13:49:38.371 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:49:38.427 +02:00 [ERR]  i  j 
+2023-09-11 13:49:38.430 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundarytWpj6yBewdYWel2f 936571 - 500 - application/json 7075.0885ms
+2023-09-11 13:50:11.508 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:50:11.526 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 17.5267ms
+2023-09-11 13:50:11.559 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:50:11.559 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:50:11.564 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 5.4133ms
+2023-09-11 13:50:11.583 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 23.6714ms
+2023-09-11 13:50:11.672 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:50:11.679 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 7.0014ms
+2023-09-11 13:50:18.791 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary1bHpeH58LHaFEM7r 936571
+2023-09-11 13:50:18.794 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:50:18.800 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:50:23.590 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 4785.7572ms
+2023-09-11 13:50:23.593 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:50:23.652 +02:00 [ERR] Index was outside the bounds of the array.
+2023-09-11 13:50:23.655 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary1bHpeH58LHaFEM7r 936571 - 500 - application/json 4864.0340ms
+2023-09-11 13:50:39.095 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary5eajVJLXLYoIuGMj 936571
+2023-09-11 13:50:39.100 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:50:39.103 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:50:43.786 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:50:48.487 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 9380.2426ms
+2023-09-11 13:50:48.490 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:50:48.550 +02:00 [ERR] 11.09.2023 i 11.09.2023  j Od dnia 11.09.2023 Do dnia 11.09.2023 
+2023-09-11 13:50:48.552 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary5eajVJLXLYoIuGMj 936571 - 500 - application/json 9456.5646ms
+2023-09-11 13:51:32.012 +02:00 [INF] Now listening on: https://localhost:7128
+2023-09-11 13:51:32.146 +02:00 [INF] Now listening on: http://localhost:5213
+2023-09-11 13:51:32.162 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-09-11 13:51:32.166 +02:00 [INF] Hosting environment: Development
+2023-09-11 13:51:32.168 +02:00 [INF] Content root path: C:\Users\ipkrzbli\source\repos\krzysztofb
+2023-09-11 13:51:32.787 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-11 13:51:33.176 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-11 13:51:33.184 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 400.5325ms
+2023-09-11 13:51:33.209 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 33.1738ms
+2023-09-11 13:51:33.212 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-11 13:51:33.255 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 42.6920ms
+2023-09-11 13:51:33.384 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-11 13:51:33.555 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 170.9643ms
+2023-09-11 13:51:42.833 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary0BHVyzxa04hZPXss 936571
+2023-09-11 13:51:42.844 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:51:42.864 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-11 13:51:44.475 +02:00 [INF] Executed DbCommand (34ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-11 13:51:50.023 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 7151.9482ms
+2023-09-11 13:51:50.026 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-11 13:51:50.100 +02:00 [ERR] {"Id":0,"IdWniosku":0,"NrEwidencyjny":9999,"IloscDni":5,"PoczatekUrlopu":"2023-09-10T22:00:00Z","KoniecUrlopu":"2023-09-10T22:00:00Z","DataWypelnienia":"2023-09-04T22:00:00Z"}
+2023-09-11 13:51:50.120 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/1 multipart/form-data;+boundary=----WebKitFormBoundary0BHVyzxa04hZPXss 936571 - 500 - application/json 7286.5578ms

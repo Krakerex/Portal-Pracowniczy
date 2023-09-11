@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace krzysztofb.Models;
-/// <summary>
-/// Context bazy danych
-/// </summary>
+
 public partial class WnioskiContext : DbContext
 {
     public WnioskiContext()
@@ -20,6 +20,8 @@ public partial class WnioskiContext : DbContext
     public virtual DbSet<Uzytkownik> Uzytkownik { get; set; }
 
     public virtual DbSet<Wniosek> Wniosek { get; set; }
+
+    public virtual DbSet<WniosekUrlop> WniosekUrlop { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Name=Wnioski");
@@ -47,6 +49,15 @@ public partial class WnioskiContext : DbContext
             entity.HasOne(d => d.IdOsobyAkceptujacejNavigation).WithMany(p => p.WniosekIdOsobyAkceptujacejNavigation).HasConstraintName("FK__Wniosek__Id_Osob__2C3393D0");
 
             entity.HasOne(d => d.IdOsobyZglaszajacejNavigation).WithMany(p => p.WniosekIdOsobyZglaszajacejNavigation).HasConstraintName("FK__Wniosek__Id_Osob__2B3F6F97");
+        });
+
+        modelBuilder.Entity<WniosekUrlop>(entity =>
+        {
+            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+
+            entity.HasOne(d => d.IdWnioskuNavigation).WithMany()
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__WniosekUr__Id_wn__35BCFE0A");
         });
 
         OnModelCreatingPartial(modelBuilder);
