@@ -1,5 +1,5 @@
 using krzysztofb.Configuration;
-using krzysztofb.Interfaces;
+using krzysztofb.Email;
 using krzysztofb.Models;
 using krzysztofb.Services;
 using krzysztofb.Services.Request.Exceptions;

@@ -1,7 +1,7 @@
 ﻿using krzysztofb.Email;
-using krzysztofb.Interfaces;
 using krzysztofb.Models;
 using krzysztofb.Models.DTO;
+using krzysztofb.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -124,7 +124,7 @@ namespace krzysztofb.Services
             UzytkownikDTO przelozony = _uzytkownikService.Read(osobaZglaszajaca.IdPrzelozonego.Value);
             var file = ReadFile(idWniosek);
             IFormFileCollection attachments = new FormFileCollection() { file };
-            EmailDataWniosek email = new EmailDataWniosek().BuildMail(wniosek, osobaZglaszajaca, osobaAkceptujaca, przelozony, attachments);
+            EmailDataWniosek email = EmailDataWniosek.BuildMail(wniosek, osobaZglaszajaca, osobaAkceptujaca, przelozony, attachments);
             _emailService.SendEmailWithAttachment(email);
             _context.SaveChanges();
 

@@ -1,8 +1,4 @@
-﻿using krzysztofb.Interfaces;
-using krzysztofb.Models;
-using krzysztofb.Models.DTO;
-
-namespace krzysztofb.Services
+﻿namespace krzysztofb.Models.DTO
 {
     /// <summary>
     /// Konwerter modelu na DTO i odwrotnie

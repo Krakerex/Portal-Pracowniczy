@@ -1,4 +1,4 @@
-﻿namespace krzysztofb.Interfaces
+﻿namespace krzysztofb.Models.DTO
 {
     /// <summary>
     /// Interfejs konwertera modelu na DTO i odwrotnie

@@ -1,4 +1,4 @@
-﻿namespace krzysztofb.Interfaces
+﻿namespace krzysztofb.Services.Interfaces
 {
     /// <summary>
     /// Interfejs zawierający metodę odczytującą obiekt z bazy danych

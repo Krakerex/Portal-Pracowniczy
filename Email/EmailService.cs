@@ -1,12 +1,10 @@
 ﻿using krzysztofb.Configuration;
-using krzysztofb.Email;
-using krzysztofb.Interfaces;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
 
-namespace krzysztofb.Services
+namespace krzysztofb.Email
 {
     /// <summary>
     /// Service do obsługi wysyłania wiadomości email

@@ -1,4 +1,4 @@
-﻿namespace krzysztofb.Interfaces
+﻿namespace krzysztofb.Services.Interfaces
 {
     /// <summary>
     /// Interfejs zawierający metodę tworzącą obiekt w bazie danych

@@ -1,6 +1,4 @@
-﻿using krzysztofb.Email;
-
-namespace krzysztofb.Interfaces
+﻿namespace krzysztofb.Email
 {
     /// <summary>
     /// Interfejs zawierający metody do wysyłania wiadomości email

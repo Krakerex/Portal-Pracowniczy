@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace krzysztofb.Interfaces
+namespace krzysztofb.Services.Interfaces
 {
     /// <summary>
     /// Interfejs zawierający metody do odczytu i pobierania plików z bazy danych

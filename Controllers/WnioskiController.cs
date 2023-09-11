@@ -50,7 +50,7 @@ namespace krzysztofb.Controllers
         /// <returns>Zaakceptowany wniosek WniosekDTO</returns>
         // PUT: api/Wnioski/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{idWniosek},{idKierownik}")]
+        [HttpPut("{idWniosek}/user/{idKierownik}")]
         public WniosekDTO PutWniosek(int idWniosek, int idKierownik)
         {
             Response.StatusCode = 201;

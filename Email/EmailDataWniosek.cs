@@ -17,7 +17,7 @@ namespace krzysztofb.Email
         /// <param name="przelozony">Obiekt UżytkownikDTo zawierający dane przełożonego osoby zgłaszającej</param>
         /// <param name="attachments">IformFileCollection zawierający załączniki do maila</param>
         /// <returns></returns>
-        public EmailDataWniosek BuildMail(Wniosek wniosek, UzytkownikDTO osobaZglaszajaca, UzytkownikDTO osobaAkceptujaca, UzytkownikDTO przelozony, IFormFileCollection attachments)
+        public static EmailDataWniosek BuildMail(Wniosek wniosek, UzytkownikDTO osobaZglaszajaca, UzytkownikDTO osobaAkceptujaca, UzytkownikDTO przelozony, IFormFileCollection attachments)
         {
             return new EmailDataWniosek
             {
