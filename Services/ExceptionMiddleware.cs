@@ -8,6 +8,9 @@
 
     namespace Request.Exceptions
     {
+        /// <summary>
+        /// Middleware do obsługi wyjątków
+        /// </summary>
         public class ExceptionMiddleware
         {
             private readonly RequestDelegate _next;

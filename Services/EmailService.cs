@@ -8,6 +8,9 @@ using MimeKit;
 
 namespace krzysztofb.Services
 {
+    /// <summary>
+    /// Service do obsługi wysyłania wiadomości email
+    /// </summary>
     public class EmailService : IEmailService
     {
         EmailSettings _emailSettings = null;
@@ -15,6 +18,11 @@ namespace krzysztofb.Services
         {
             _emailSettings = options.Value;
         }
+        /// <summary>
+        /// Metoda wysyłająca wiadomość email
+        /// </summary>
+        /// <param name="emailData">EmailData wiadomości email</param>
+        /// <returns>Bool zależny od sukcesu wysłania</returns>
         public bool SendEmail(EmailData emailData)
         {
             try
@@ -41,6 +49,11 @@ namespace krzysztofb.Services
                 throw ex;
             }
         }
+        /// <summary>
+        /// Metoda wysyłająca wiadomość email z załącznikami
+        /// </summary>
+        /// <param name="emailData">EmailData wiadomości email z załącznikami</param>
+        /// <returns>Bool zależny od sukcesu wysłania</returns>
         public bool SendEmailWithAttachment(EmailDataWithAttachment emailData)
         {
             try

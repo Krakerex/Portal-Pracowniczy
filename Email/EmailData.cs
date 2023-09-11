@@ -1,5 +1,8 @@
 ﻿namespace krzysztofb.Email
 {
+    /// <summary>
+    /// Model zawierający dane do wysłania wiadomości email
+    /// </summary>
     public class EmailData
     {
         public string EmailToId { get; set; }

@@ -7,6 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace krzysztofb.Services
 {
+    /// <summary>
+    /// Service służący do obsługi wniosków
+    /// </summary>
     public class WniosekService :
         IDatabaseDelete<WniosekDTO>,
         IDatabaseCreate<WniosekDTO>,
@@ -25,19 +28,33 @@ namespace krzysztofb.Services
             _emailService = emailService;
 
         }
-
+        /// <summary>
+        /// Metoda służąca do walidacji i dodania pliku jak pole obiektu WniosekDTO
+        /// </summary>
+        /// <param name="wniosek">Wcześniej przygotowany obiekt WniosekDTO, do którego chcemy dodać plik</param>
+        /// <param name="file">Plik, który chcemy dodać</param>
+        /// <returns>WniosekDTO z dodanym plikiem</returns>
+        /// <exception cref="BadHttpRequestException"></exception>
         public WniosekDTO AddFile(WniosekDTO wniosek, IFormFile file)
         {
             if (file == null)
             {
-                throw new BadHttpRequestException("File not found");
+                throw new BadHttpRequestException("Brak pliku");
+            }
+            if (_context.Uzytkownik.Find(wniosek.IdOsobyZglaszajacej) == null)
+            {
+                throw new BadHttpRequestException("Użytkownik wysyłający wniosek nie istnieje");
             }
             file.CopyToAsync(_memoryStream);
             wniosek.Nazwa = file.FileName;
             wniosek.Plik = _memoryStream.ToArray();
             return wniosek;
         }
-
+        /// <summary>
+        /// Metoda zapisująca obiekt wniosekDTO do bazy danych
+        /// </summary>
+        /// <param name="obj">Obiekt wniosekDTO do zapisania</param>
+        /// <returns>Zapisany wniosekDTO</returns>
         public WniosekDTO Create(WniosekDTO obj)
         {
             var entry = _context.Wniosek.Add(ModelConverter.ConvertToModel(obj));
@@ -45,20 +62,28 @@ namespace krzysztofb.Services
             _context.Entry(entry.Entity).GetDatabaseValues();
             return ModelConverter.ConvertToDTO(entry.Entity);
         }
-
+        /// <summary>
+        /// Metoda walidująca i usuwająca wniosek o podanym id
+        /// </summary>
+        /// <param name="id">Id wniosku do usunięcia</param>
+        /// <returns>Usunięty wniosek</returns>
+        /// <exception cref="BadHttpRequestException"></exception>
         public WniosekDTO Delete(int id)
         {
             var wniosek = _context.Wniosek.Find(id);
             if (wniosek == null)
             {
-                throw new BadHttpRequestException("Wniosek not found");
+                throw new BadHttpRequestException("Wniosek do usunięcia nie znaleziony");
             }
 
             _context.Wniosek.Remove(wniosek);
             _context.SaveChanges();
             return ModelConverter.ConvertToDTO(wniosek);
         }
-
+        /// <summary>
+        /// Metoda wczytująca wszystkie wnioski z bazy danych do listy
+        /// </summary>
+        /// <returns>Lista obiektów WniosekDTO</returns>
         public List<WniosekDTO> Read()
         {
             //read all from model Wniosek
@@ -69,6 +94,13 @@ namespace krzysztofb.Services
             return wnioski
                .ToList();
         }
+        /// <summary>
+        /// Metoda walidująca i zmieniająca status wniosku na zaakceptowany
+        /// </summary>
+        /// <param name="idWniosek">Id wniosku do zaakceptowania</param>
+        /// <param name="idKierownik">Id kierownika akceptującego wniosek</param>
+        /// <returns>Zaakceptowany WniosekDTO</returns>
+        /// <exception cref="BadHttpRequestException"></exception>
         public WniosekDTO Accept(int idWniosek, int idKierownik)
         {
             //check if user with idKierownik has role Kierownik
@@ -76,15 +108,15 @@ namespace krzysztofb.Services
             var kierownik = _context.Uzytkownik.Find(idKierownik);
             if (kierownik == null)
             {
-                throw new BadHttpRequestException("Kierownik not found");
+                throw new BadHttpRequestException("Nie podano id kierownika");
             }
             else if (kierownik.Role != 2)
             {
-                throw new BadHttpRequestException("User is not Kierownik");
+                throw new BadHttpRequestException("Użytkownik nie jest kierownikiem");
             }
             else if (wniosek == null)
             {
-                throw new BadHttpRequestException("Wniosek not found");
+                throw new BadHttpRequestException("Wniosek o podanym id nie istnieje");
             }
 
             UzytkownikDTO osobaZglaszajaca = _uzytkownikService.Read(wniosek.IdOsobyZglaszajacej.Value);
@@ -98,12 +130,18 @@ namespace krzysztofb.Services
 
             return ModelConverter.ConvertToDTO(wniosek);
         }
+        /// <summary>
+        /// Metoda walidująca i wczytująca plik z wniosku o podanym id
+        /// </summary>
+        /// <param name="id">Id wniosku z którego chcemy wczytać plik</param>
+        /// <returns>IFormFIle pliku wczytanego z bazy</returns>
+        /// <exception cref="BadHttpRequestException"></exception>
         public IFormFile ReadFile(int id)
         {
             var wniosek = _context.Wniosek.Find(id);
             if (wniosek == null)
             {
-                throw new BadHttpRequestException("Wniosek not found");
+                throw new BadHttpRequestException("Wniosek o podanym id nie istnieje");
             }
             var stream = new MemoryStream(wniosek.Plik);
             IFormFile file = new FormFile(stream, 0, wniosek.Plik.Length, wniosek.Nazwa, wniosek.Nazwa)
@@ -114,6 +152,11 @@ namespace krzysztofb.Services
             };
             return file;
         }
+        /// <summary>
+        /// Metoda pobierająca plik z wnioskiem na podstawie id
+        /// </summary>
+        /// <param name="id">Id wniosku z plikiem do pobrania</param>
+        /// <returns>FileResult pliku do pobrania</returns>
         public FileResult DownloadFile(int id)
         {
 

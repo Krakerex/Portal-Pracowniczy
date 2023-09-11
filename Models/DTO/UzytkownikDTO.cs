@@ -1,5 +1,8 @@
 ﻿namespace krzysztofb.Models.DTO
 {
+    /// <summary>
+    /// Model DTO użytkownika
+    /// </summary>
     public record UzytkownikDTO
     {
         public int Id

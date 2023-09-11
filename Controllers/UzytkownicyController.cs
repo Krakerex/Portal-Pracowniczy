@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace krzysztofb.Controllers
 {
+    /// <summary>
+    /// Controller obsługujący operacje na użytkownikach
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UzytkownicyController : ControllerBase
@@ -15,18 +18,33 @@ namespace krzysztofb.Controllers
         {
             _uzytkownikService = uzytkownikService;
         }
+        /// <summary>
+        /// Metoda zwracająca listę użytkowników UżytkownikDTO
+        /// </summary>
+        /// <returns>Lista obiektów UżytkownikDTO</returns>
         // GET: api/Uzytkownicy
         [HttpGet]
         public List<UzytkownikDTO> GetUzytkownicy()
         {
             return _uzytkownikService.Read();
         }
+        /// <summary>
+        /// Metoda zwracająca użytkownika na podstawie id
+        /// </summary>
+        /// <param name="id">Id użytkownika którego chcemy odczytać</param>
+        /// <returns>Odczytany UżytkownikDTO</returns>
         // GET: api/Uzytkowniks/5
         [HttpGet("{id}")]
         public UzytkownikDTO GetUzytkownik(int id)
         {
             return _uzytkownikService.Read(id);
         }
+        /// <summary>
+        /// Metoda służąca do aktualizacji użytkownika
+        /// </summary>
+        /// <param name="id">Id użytkownika do zaaktualizowania</param>
+        /// <param name="uzytkownik">Obiekt UżytkownikDTO z nowymi danymi</param>
+        /// <returns>Zaaktualizowany UżytkownikDTO</returns>
         // PUT: api/Uzytkowniks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -35,7 +53,11 @@ namespace krzysztofb.Controllers
             Response.StatusCode = 201;
             return _uzytkownikService.Update(id, uzytkownik);
         }
-
+        /// <summary>
+        /// Metoda służąca do dodawania użytkownika do bazy danych
+        /// </summary>
+        /// <param name="uzytkownik">Obiekt UżytkownikDTO z danymi do dodania</param>
+        /// <returns>Dodany UżytkownikDTO</returns>
         // POST: api/Uzytkowniks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -45,6 +67,11 @@ namespace krzysztofb.Controllers
 
             return _uzytkownikService.Create(uzytkownik);
         }
+        /// <summary>
+        /// Metoda służąca do usuwania użytkownika z bazy danych
+        /// </summary>
+        /// <param name="id">Id użytkownika do usunięcia</param>
+        /// <returns>Usunięty UżytkownikDTO</returns>
         // DELETE: api/Uzytkowniks/5
         [HttpDelete("{id}")]
         public UzytkownikDTO DeleteUzytkownik(int id)

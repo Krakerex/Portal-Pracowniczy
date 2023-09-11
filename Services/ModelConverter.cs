@@ -4,6 +4,9 @@ using krzysztofb.Models.DTO;
 
 namespace krzysztofb.Services
 {
+    /// <summary>
+    /// Konwerter modelu na DTO i odwrotnie
+    /// </summary>
     public class ModelConverter : IModelConverter<Wniosek, WniosekDTO>, IModelConverter<Uzytkownik, UzytkownikDTO>
     {
         public static WniosekDTO ConvertToDTO(Wniosek wniosek)

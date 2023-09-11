@@ -1,5 +1,8 @@
 ﻿namespace krzysztofb.Models.DTO
 {
+    /// <summary>
+    /// Model DTO wniosku
+    /// </summary>
     public class WniosekDTO
     {
         public int Id { get; set; }

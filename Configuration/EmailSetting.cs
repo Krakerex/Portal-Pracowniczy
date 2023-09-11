@@ -1,5 +1,8 @@
 ﻿namespace krzysztofb.Configuration
 {
+    /// <summary>
+    /// Model zawierający dane do logowania do serwera pocztowego
+    /// </summary>
     public class EmailSettings
     {
         public string EmailId { get; set; }
