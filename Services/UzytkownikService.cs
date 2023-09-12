@@ -122,7 +122,7 @@ namespace krzysztofb.Services
                 //check if obj contains any null fields excluding id
                 if (obj.GetType().GetProperties().Any(x => x.GetValue(obj) == null && x.Name != "Id"))
                 {
-                    throw new BadHttpRequestException("Użytkownik o podanym id nie istnieje");
+                    throw new DatabaseValidationException("Użytkownik o id: " + id + " nie istnieje");
                 }
                 else
                 {
@@ -134,23 +134,23 @@ namespace krzysztofb.Services
             }
             else if (_context.Uzytkownik.Find(obj.IdPrzelozonego) == null && obj.IdPrzelozonego.HasValue)
             {
-                throw new BadHttpRequestException("Użytkownik podany za przełożonego nie istnieje");
+                throw new DatabaseValidationException("Użytkownik o id: " + obj.IdPrzelozonego + " podany za przełożonego nie istnieje");
             }
             else if (obj.IdPrzelozonego.HasValue)
             {
                 if (_context.Uzytkownik.Find(obj.IdPrzelozonego).Role != 2)
                 {
-                    throw new BadHttpRequestException("Użytkownik podany za przełożonego nie jest kierownikiem");
+                    throw new DatabaseValidationException("Użytkownik o id: " + obj.IdPrzelozonego + " podany za przełożonego nie jest kierownikiem");
                 }
 
             }
             else if (_context.Role.Find(obj.Role) == null && obj.Role.HasValue)
             {
-                throw new BadHttpRequestException("Podana rola nie istnieje");
+                throw new DatabaseValidationException("Podana rola o id: " + obj.Role + " nie istnieje");
             }
             else if (_context.Uzytkownik.FirstOrDefault(x => x.Email == obj.Email) != null && !obj.Email.IsNullOrEmpty())
             {
-                throw new DbUpdateException("Podany email już istnieje w bazie danych");
+                throw new DatabaseValidationException("Podany email: " + obj.Email + " już istnieje w bazie danych");
             }
             var user = _context.Uzytkownik.Find(id);
 
