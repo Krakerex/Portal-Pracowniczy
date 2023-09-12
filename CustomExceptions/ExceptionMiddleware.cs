@@ -1,5 +1,6 @@
 ﻿namespace krzysztofb.Services
 {
+    using krzysztofb.CustomExceptions;
     using Microsoft.EntityFrameworkCore;
     using System.Net;
     using System.Text.Json;
@@ -58,6 +59,12 @@
                 {
                     context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
                     message = "Bad request";
+                    _logger.LogError(exception.Message, message, DateTime.UtcNow);
+                }
+                else if (exception is PdfToDatabaseException)
+                {
+                    context.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
+                    message = "Form invalid";
                     _logger.LogError(exception.Message, message, DateTime.UtcNow);
                 }
                 else

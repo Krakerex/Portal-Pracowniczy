@@ -13,7 +13,12 @@
                 Plik = wniosek.Plik,
                 Nazwa = wniosek.Nazwa,
                 IdOsobyZglaszajacej = wniosek.IdOsobyZglaszajacej,
-                IdOsobyAkceptujacej = wniosek.IdOsobyAkceptujacej
+                IdOsobyAkceptujacej = wniosek.IdOsobyAkceptujacej,
+                Data_rozpoczecia = DateOnly.FromDateTime(wniosek.DataRozpoczecia.Value),
+                Data_zakonczenia = DateOnly.FromDateTime(wniosek.DataZakonczenia.Value),
+                Data_wypelnienia = DateOnly.FromDateTime(wniosek.DataWypelnienia.Value),
+                Nr_ewidencyjny = wniosek.NumerEwidencyjny,
+                Ilosc_dni = wniosek.IloscDni
             };
         }
 
@@ -38,7 +43,13 @@
                 Plik = wniosek.Plik,
                 Nazwa = wniosek.Nazwa,
                 IdOsobyZglaszajacej = wniosek.IdOsobyZglaszajacej,
-                IdOsobyAkceptujacej = wniosek.IdOsobyAkceptujacej
+                IdOsobyAkceptujacej = wniosek.IdOsobyAkceptujacej,
+                //convert DateOnly to DateTime
+                DataRozpoczecia = wniosek.Data_rozpoczecia.Value.ToDateTime(TimeOnly.MinValue),
+                DataWypelnienia = wniosek.Data_wypelnienia.Value.ToDateTime(TimeOnly.MinValue),
+                DataZakonczenia = wniosek.Data_zakonczenia.Value.ToDateTime(TimeOnly.MinValue),
+                NumerEwidencyjny = wniosek.Nr_ewidencyjny,
+                IloscDni = wniosek.Ilosc_dni
             };
         }
 

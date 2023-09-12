@@ -1,7 +1,8 @@
 ﻿namespace krzysztofb.Services.Interfaces
 {
-    public interface IPdfToDatabase
+    public interface IPdfToDatabase<T>
     {
-        public string CheckPDFType(IFormFile file);
+        public T LoadPdf(IFormFile file);
+        public T GetPdfData(StringReader doc);
     }
 }

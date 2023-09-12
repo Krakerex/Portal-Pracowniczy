@@ -1,0 +1,523 @@
+2023-09-12 08:00:02.328 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.GetWniosek (krzysztofb) in 3656.7611ms
+2023-09-12 08:00:02.334 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.GetWniosek (krzysztofb)'
+2023-09-12 08:00:02.356 +02:00 [ERR] Wniosek o podanym id nie istnieje
+2023-09-12 08:00:02.360 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/api/Wnioski/1 - - - 400 - application/json 3695.8716ms
+2023-09-12 08:00:06.604 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/api/Wnioski/10 - -
+2023-09-12 08:00:06.605 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.GetWniosek (krzysztofb)'
+2023-09-12 08:00:06.607 +02:00 [INF] Route matched with {action = "GetWniosek", controller = "Wnioski"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.FileResult GetWniosek(Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:00:06.612 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Data_rozpoczecia], [w].[Data_wypelnienia], [w].[Data_zakonczenia], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Ilosc_dni], [w].[Nazwa], [w].[Numer_ewidencyjny], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-12 08:00:06.618 +02:00 [INF] Executing FileContentResult, sending file with download name 'Baza Danych do nowego zadania.txt' ...
+2023-09-12 08:00:06.622 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.GetWniosek (krzysztofb) in 12.172ms
+2023-09-12 08:00:06.624 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.GetWniosek (krzysztofb)'
+2023-09-12 08:00:06.625 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/api/Wnioski/10 - - - 200 349 application/pdf 21.6409ms
+2023-09-12 08:00:13.934 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/api/Wnioski/30 - -
+2023-09-12 08:00:13.935 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.GetWniosek (krzysztofb)'
+2023-09-12 08:00:13.937 +02:00 [INF] Route matched with {action = "GetWniosek", controller = "Wnioski"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.FileResult GetWniosek(Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:00:13.941 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Data_rozpoczecia], [w].[Data_wypelnienia], [w].[Data_zakonczenia], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Ilosc_dni], [w].[Nazwa], [w].[Numer_ewidencyjny], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-12 08:00:13.954 +02:00 [INF] Executing FileContentResult, sending file with download name 'zadanie 2.pdf' ...
+2023-09-12 08:00:13.973 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.GetWniosek (krzysztofb) in 34.1257ms
+2023-09-12 08:00:13.975 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.GetWniosek (krzysztofb)'
+2023-09-12 08:00:13.976 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/api/Wnioski/30 - - - 200 936379 application/pdf 43.2102ms
+2023-09-12 08:15:03.791 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-12 08:15:03.808 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 16.9688ms
+2023-09-12 08:15:03.849 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-12 08:15:03.849 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-12 08:15:03.851 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 2.3575ms
+2023-09-12 08:15:03.865 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 15.8081ms
+2023-09-12 08:15:04.138 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-12 08:15:04.150 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 12.2484ms
+2023-09-12 08:15:11.731 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/upload multipart/form-data;+boundary=----WebKitFormBoundarynsblxvkQBGaxITRB 936571
+2023-09-12 08:15:11.740 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-12 08:15:11.744 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:15:11.787 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-12 08:15:11.806 +02:00 [INF] Executed DbCommand (12ms) [Parameters=[@p0='?' (DbType = Date), @p1='?' (DbType = Date), @p2='?' (DbType = Date), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = 8000) (DbType = AnsiString), @p7='?' (DbType = Int32), @p8='?' (Size = -1) (DbType = Binary)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Wniosek] ([Data_rozpoczecia], [Data_wypelnienia], [Data_zakonczenia], [Id_Osoby_Akceptujacej], [Id_Osoby_Zglaszajacej], [Ilosc_dni], [Nazwa], [Numer_ewidencyjny], [Plik])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8);
+2023-09-12 08:15:11.812 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Data_rozpoczecia], [w].[Data_wypelnienia], [w].[Data_zakonczenia], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Ilosc_dni], [w].[Nazwa], [w].[Numer_ewidencyjny], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-12 08:15:11.820 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.WniosekDTO'.
+2023-09-12 08:15:11.870 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 124.5724ms
+2023-09-12 08:15:11.873 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-12 08:15:12.057 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Headers are read-only, response has already started.
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpHeaders.ThrowHeadersReadOnlyException()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders.Microsoft.AspNetCore.Http.IHeaderDictionary.set_ContentType(StringValues value)
+   at Microsoft.AspNetCore.Http.DefaultHttpResponse.set_ContentType(String value)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.HandleExceptionAsync(HttpContext context, Exception exception)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-09-12 08:15:12.077 +02:00 [WRN] The response has already started, the error page middleware will not be executed.
+2023-09-12 08:15:12.078 +02:00 [ERR] Connection id "0HMTJAHJR401S", Request id "0HMTJAHJR401S:00000033": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Headers are read-only, response has already started.
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpHeaders.ThrowHeadersReadOnlyException()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders.Microsoft.AspNetCore.Http.IHeaderDictionary.set_ContentType(StringValues value)
+   at Microsoft.AspNetCore.Http.DefaultHttpResponse.set_ContentType(String value)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.HandleExceptionAsync(HttpContext context, Exception exception)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2023-09-12 08:15:12.086 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/upload multipart/form-data;+boundary=----WebKitFormBoundarynsblxvkQBGaxITRB 936571 - 201 - application/json;+charset=utf-8 354.9227ms
+2023-09-12 08:15:29.062 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7128/api/Wnioski/30/user/1 - 0
+2023-09-12 08:15:29.066 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:15:29.069 +02:00 [INF] Route matched with {action = "PutWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PutWniosek(Int32, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:15:29.075 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Data_rozpoczecia], [w].[Data_wypelnienia], [w].[Data_zakonczenia], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Ilosc_dni], [w].[Nazwa], [w].[Numer_ewidencyjny], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-12 08:15:29.084 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 08:15:29.089 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:15:29.092 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:15:29.095 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:15:38.731 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.WniosekDTO'.
+2023-09-12 08:15:38.740 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb) in 9666.3086ms
+2023-09-12 08:15:38.742 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:15:38.921 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Headers are read-only, response has already started.
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpHeaders.ThrowHeadersReadOnlyException()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders.Microsoft.AspNetCore.Http.IHeaderDictionary.set_ContentType(StringValues value)
+   at Microsoft.AspNetCore.Http.DefaultHttpResponse.set_ContentType(String value)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.HandleExceptionAsync(HttpContext context, Exception exception)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-09-12 08:15:38.925 +02:00 [WRN] The response has already started, the error page middleware will not be executed.
+2023-09-12 08:15:38.926 +02:00 [ERR] Connection id "0HMTJAHJR401S", Request id "0HMTJAHJR401S:00000035": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Headers are read-only, response has already started.
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpHeaders.ThrowHeadersReadOnlyException()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders.Microsoft.AspNetCore.Http.IHeaderDictionary.set_ContentType(StringValues value)
+   at Microsoft.AspNetCore.Http.DefaultHttpResponse.set_ContentType(String value)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.HandleExceptionAsync(HttpContext context, Exception exception)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2023-09-12 08:15:38.932 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/Wnioski/30/user/1 - 0 - 201 - application/json;+charset=utf-8 9870.2621ms
+2023-09-12 08:18:03.707 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-12 08:18:03.720 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 13.8460ms
+2023-09-12 08:18:03.741 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-12 08:18:03.741 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-12 08:18:03.743 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 2.9905ms
+2023-09-12 08:18:03.757 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 16.0997ms
+2023-09-12 08:18:03.897 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-12 08:18:03.904 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 6.7803ms
+2023-09-12 08:18:12.325 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7128/api/Wnioski/30/user/1 - 0
+2023-09-12 08:18:12.327 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:18:12.330 +02:00 [INF] Route matched with {action = "PutWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PutWniosek(Int32, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:18:12.338 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Data_rozpoczecia], [w].[Data_wypelnienia], [w].[Data_zakonczenia], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Ilosc_dni], [w].[Nazwa], [w].[Numer_ewidencyjny], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-12 08:18:12.347 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 08:18:12.354 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:18:12.358 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:18:12.361 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:18:21.413 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.WniosekDTO'.
+2023-09-12 08:18:21.422 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb) in 9086.8826ms
+2023-09-12 08:18:21.425 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:18:21.574 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Headers are read-only, response has already started.
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpHeaders.ThrowHeadersReadOnlyException()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders.Microsoft.AspNetCore.Http.IHeaderDictionary.set_ContentType(StringValues value)
+   at Microsoft.AspNetCore.Http.DefaultHttpResponse.set_ContentType(String value)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.HandleExceptionAsync(HttpContext context, Exception exception)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-09-12 08:18:21.579 +02:00 [WRN] The response has already started, the error page middleware will not be executed.
+2023-09-12 08:18:21.581 +02:00 [ERR] Connection id "0HMTJAHJR401S", Request id "0HMTJAHJR401S:0000003F": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Headers are read-only, response has already started.
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpHeaders.ThrowHeadersReadOnlyException()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders.Microsoft.AspNetCore.Http.IHeaderDictionary.set_ContentType(StringValues value)
+   at Microsoft.AspNetCore.Http.DefaultHttpResponse.set_ContentType(String value)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.HandleExceptionAsync(HttpContext context, Exception exception)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2023-09-12 08:18:21.586 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/Wnioski/30/user/1 - 0 - 201 - application/json;+charset=utf-8 9261.5114ms
+2023-09-12 08:18:58.401 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7128/api/Wnioski/30/user/1 - 0
+2023-09-12 08:18:58.404 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:18:58.406 +02:00 [INF] Route matched with {action = "PutWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PutWniosek(Int32, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:18:58.410 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Data_rozpoczecia], [w].[Data_wypelnienia], [w].[Data_zakonczenia], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Ilosc_dni], [w].[Nazwa], [w].[Numer_ewidencyjny], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-12 08:18:58.421 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 08:18:58.424 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:18:58.427 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:18:58.431 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:19:07.544 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.WniosekDTO'.
+2023-09-12 08:19:07.590 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb) in 9182.1673ms
+2023-09-12 08:19:07.593 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:19:07.741 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Headers are read-only, response has already started.
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpHeaders.ThrowHeadersReadOnlyException()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders.Microsoft.AspNetCore.Http.IHeaderDictionary.set_ContentType(StringValues value)
+   at Microsoft.AspNetCore.Http.DefaultHttpResponse.set_ContentType(String value)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.HandleExceptionAsync(HttpContext context, Exception exception)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-09-12 08:19:07.745 +02:00 [WRN] The response has already started, the error page middleware will not be executed.
+2023-09-12 08:19:07.746 +02:00 [ERR] Connection id "0HMTJAHJR401S", Request id "0HMTJAHJR401S:00000041": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Headers are read-only, response has already started.
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpHeaders.ThrowHeadersReadOnlyException()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders.Microsoft.AspNetCore.Http.IHeaderDictionary.set_ContentType(StringValues value)
+   at Microsoft.AspNetCore.Http.DefaultHttpResponse.set_ContentType(String value)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.HandleExceptionAsync(HttpContext context, Exception exception)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2023-09-12 08:19:07.751 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/Wnioski/30/user/1 - 0 - 201 - application/json;+charset=utf-8 9350.3528ms
+2023-09-12 08:19:11.996 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7128/api/Wnioski/31/user/1 - 0
+2023-09-12 08:19:12.002 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:19:12.004 +02:00 [INF] Route matched with {action = "PutWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PutWniosek(Int32, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:19:12.013 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Data_rozpoczecia], [w].[Data_wypelnienia], [w].[Data_zakonczenia], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Ilosc_dni], [w].[Nazwa], [w].[Numer_ewidencyjny], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-12 08:19:12.022 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 08:19:12.028 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:19:12.032 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:19:12.036 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:19:21.356 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Wniosek] SET [Id_Osoby_Akceptujacej] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2023-09-12 08:19:21.360 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.WniosekDTO'.
+2023-09-12 08:19:21.367 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb) in 9357.2362ms
+2023-09-12 08:19:21.369 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:19:21.513 +02:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Headers are read-only, response has already started.
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpHeaders.ThrowHeadersReadOnlyException()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders.Microsoft.AspNetCore.Http.IHeaderDictionary.set_ContentType(StringValues value)
+   at Microsoft.AspNetCore.Http.DefaultHttpResponse.set_ContentType(String value)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.HandleExceptionAsync(HttpContext context, Exception exception)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2023-09-12 08:19:21.518 +02:00 [WRN] The response has already started, the error page middleware will not be executed.
+2023-09-12 08:19:21.519 +02:00 [ERR] Connection id "0HMTJAHJR401S", Request id "0HMTJAHJR401S:00000043": An unhandled exception was thrown by the application.
+System.InvalidOperationException: Headers are read-only, response has already started.
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpHeaders.ThrowHeadersReadOnlyException()
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpResponseHeaders.Microsoft.AspNetCore.Http.IHeaderDictionary.set_ContentType(StringValues value)
+   at Microsoft.AspNetCore.Http.DefaultHttpResponse.set_ContentType(String value)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.HandleExceptionAsync(HttpContext context, Exception exception)
+   at krzysztofb.Services.Request.Exceptions.ExceptionMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Watch.BrowserRefresh.BrowserRefreshMiddleware.InvokeAsync(HttpContext context)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2023-09-12 08:19:21.525 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/Wnioski/31/user/1 - 0 - 201 - application/json;+charset=utf-8 9529.0650ms
+2023-09-12 08:22:16.293 +02:00 [INF] Now listening on: https://localhost:7128
+2023-09-12 08:22:16.325 +02:00 [INF] Now listening on: http://localhost:5213
+2023-09-12 08:22:16.328 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-09-12 08:22:16.329 +02:00 [INF] Hosting environment: Development
+2023-09-12 08:22:16.330 +02:00 [INF] Content root path: C:\Users\ipkrzbli\source\repos\krzysztofb
+2023-09-12 08:22:17.097 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-12 08:22:17.331 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-12 08:22:17.334 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 240.8768ms
+2023-09-12 08:22:17.341 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 10.1378ms
+2023-09-12 08:22:17.350 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-12 08:22:17.379 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 28.7391ms
+2023-09-12 08:22:17.609 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-12 08:22:17.740 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 130.3318ms
+2023-09-12 08:22:22.871 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7128/api/Wnioski/31/user/1 - 0
+2023-09-12 08:22:22.880 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:22:22.898 +02:00 [INF] Route matched with {action = "PutWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PutWniosek(Int32, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:22:24.198 +02:00 [INF] Executed DbCommand (31ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Data_rozpoczecia], [w].[Data_wypelnienia], [w].[Data_zakonczenia], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Ilosc_dni], [w].[Nazwa], [w].[Numer_ewidencyjny], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-12 08:22:24.295 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 08:22:24.391 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:22:24.405 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:22:24.410 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:22:38.792 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.WniosekDTO'.
+2023-09-12 08:22:38.827 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb) in 15922.5512ms
+2023-09-12 08:22:38.830 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:22:38.843 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/Wnioski/31/user/1 - 0 - 201 - application/json;+charset=utf-8 15971.8233ms
+2023-09-12 08:23:29.869 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7128/api/Wnioski/31/user/1 - 0
+2023-09-12 08:23:29.877 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:23:29.882 +02:00 [INF] Route matched with {action = "PutWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PutWniosek(Int32, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:23:29.939 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Data_rozpoczecia], [w].[Data_wypelnienia], [w].[Data_zakonczenia], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Ilosc_dni], [w].[Nazwa], [w].[Numer_ewidencyjny], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-12 08:23:29.949 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 08:23:29.955 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:23:29.959 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:23:29.962 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:23:39.007 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.WniosekDTO'.
+2023-09-12 08:23:39.020 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb) in 9135.4905ms
+2023-09-12 08:23:39.022 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:23:39.023 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/Wnioski/31/user/1 - 0 - 201 - application/json;+charset=utf-8 9154.7154ms
+2023-09-12 08:25:41.461 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7128/api/Wnioski/31/user/1 - 0
+2023-09-12 08:25:41.468 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:25:41.472 +02:00 [INF] Route matched with {action = "PutWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PutWniosek(Int32, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:25:41.492 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Data_rozpoczecia], [w].[Data_wypelnienia], [w].[Data_zakonczenia], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Ilosc_dni], [w].[Nazwa], [w].[Numer_ewidencyjny], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-12 08:25:41.502 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 08:25:41.508 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:25:41.511 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:25:41.514 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:25:51.058 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.WniosekDTO'.
+2023-09-12 08:25:51.084 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb) in 9608.9481ms
+2023-09-12 08:25:51.086 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:25:51.088 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/Wnioski/31/user/1 - 0 - 201 - application/json;+charset=utf-8 9626.8317ms
+2023-09-12 08:31:54.973 +02:00 [INF] Now listening on: https://localhost:7128
+2023-09-12 08:31:55.049 +02:00 [INF] Now listening on: http://localhost:5213
+2023-09-12 08:31:55.052 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-09-12 08:31:55.053 +02:00 [INF] Hosting environment: Development
+2023-09-12 08:31:55.054 +02:00 [INF] Content root path: C:\Users\ipkrzbli\source\repos\krzysztofb
+2023-09-12 08:31:55.749 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-12 08:31:56.003 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 257.0088ms
+2023-09-12 08:31:56.048 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-12 08:31:56.062 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-12 08:31:56.063 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 14.1032ms
+2023-09-12 08:31:56.125 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 62.8037ms
+2023-09-12 08:31:56.172 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-12 08:31:56.297 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 124.5531ms
+2023-09-12 08:32:01.068 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7128/api/Wnioski/31/user/1 - 0
+2023-09-12 08:32:01.078 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:32:01.097 +02:00 [INF] Route matched with {action = "PutWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PutWniosek(Int32, Int32) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:32:02.443 +02:00 [INF] Executed DbCommand (44ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [w].[Id], [w].[Data_rozpoczecia], [w].[Data_wypelnienia], [w].[Data_zakonczenia], [w].[Id_Osoby_Akceptujacej], [w].[Id_Osoby_Zglaszajacej], [w].[Ilosc_dni], [w].[Nazwa], [w].[Numer_ewidencyjny], [w].[Plik]
+FROM [Wniosek] AS [w]
+WHERE [w].[Id] = @__p_0
+2023-09-12 08:32:02.538 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 08:32:02.634 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:32:02.651 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:32:02.655 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role], [u0].[Id], [u0].[Email], [u0].[Id_Przelozonego], [u0].[Imie], [u0].[Nazwisko], [u0].[Role], [r].[Id], [r].[Nazwa]
+FROM [Uzytkownik] AS [u]
+LEFT JOIN [Uzytkownik] AS [u0] ON [u].[Id_Przelozonego] = [u0].[Id]
+LEFT JOIN [Role] AS [r] ON [u].[Role] = [r].[Id]
+WHERE [u].[Id] = @__id_0
+2023-09-12 08:32:12.716 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.WniosekDTO'.
+2023-09-12 08:32:12.762 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb) in 11658.4034ms
+2023-09-12 08:32:12.765 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PutWniosek (krzysztofb)'
+2023-09-12 08:32:12.774 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/Wnioski/31/user/1 - 0 - 201 - application/json;+charset=utf-8 11705.5164ms
+2023-09-12 08:33:43.515 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/upload multipart/form-data;+boundary=----WebKitFormBoundary87DdIWaP12A71cE2 936571
+2023-09-12 08:33:43.551 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-12 08:33:43.554 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:33:43.877 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-12 08:34:22.656 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 39099.7346ms
+2023-09-12 08:34:22.659 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-12 08:34:22.758 +02:00 [ERR] Ilość dni nie zgadza się z podanymi datami
+2023-09-12 08:34:22.770 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/upload multipart/form-data;+boundary=----WebKitFormBoundary87DdIWaP12A71cE2 936571 - 500 - application/json 39255.1531ms
+2023-09-12 08:37:32.711 +02:00 [INF] Now listening on: https://localhost:7128
+2023-09-12 08:37:32.744 +02:00 [INF] Now listening on: http://localhost:5213
+2023-09-12 08:37:32.748 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-09-12 08:37:32.750 +02:00 [INF] Hosting environment: Development
+2023-09-12 08:37:32.752 +02:00 [INF] Content root path: C:\Users\ipkrzbli\source\repos\krzysztofb
+2023-09-12 08:37:33.397 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-12 08:37:33.650 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 256.3890ms
+2023-09-12 08:37:33.683 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-12 08:37:33.683 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-12 08:37:33.714 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 30.6165ms
+2023-09-12 08:37:33.722 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 38.6461ms
+2023-09-12 08:37:33.793 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-12 08:37:33.922 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 129.6276ms
+2023-09-12 08:37:43.685 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/upload multipart/form-data;+boundary=----WebKitFormBoundaryKbeYXokkIf1ibnP9 936571
+2023-09-12 08:37:43.697 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-12 08:37:43.714 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:37:45.329 +02:00 [INF] Executed DbCommand (37ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-12 08:37:48.418 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 4695.7348ms
+2023-09-12 08:37:48.423 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-12 08:37:48.503 +02:00 [ERR] Ilość dni nie zgadza się z podanymi datami
+2023-09-12 08:37:48.524 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/upload multipart/form-data;+boundary=----WebKitFormBoundaryKbeYXokkIf1ibnP9 936571 - 400 - application/json 4838.8933ms
+2023-09-12 08:38:19.954 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-12 08:38:19.982 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 28.3216ms
+2023-09-12 08:38:20.012 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-12 08:38:20.012 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-12 08:38:20.015 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 2.8543ms
+2023-09-12 08:38:20.033 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.3641ms
+2023-09-12 08:38:20.231 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-12 08:38:20.244 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 13.2420ms
+2023-09-12 08:38:28.476 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7128/api/Wnioski/upload multipart/form-data;+boundary=----WebKitFormBoundarykXUuyyTsvGsQSVQQ 936571
+2023-09-12 08:38:28.488 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-12 08:38:28.491 +02:00 [INF] Route matched with {action = "PostWniosek", controller = "Wnioski"}. Executing controller action with signature krzysztofb.Models.DTO.WniosekDTO PostWniosek(Microsoft.AspNetCore.Http.IFormFile) on controller krzysztofb.Controllers.WnioskiController (krzysztofb).
+2023-09-12 08:38:28.567 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (Size = 30) (DbType = AnsiString), @__p_1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Imie] = @__p_0 AND [u].[Nazwisko] = @__p_1
+2023-09-12 08:38:30.401 +02:00 [INF] Executed action krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb) in 1907.4175ms
+2023-09-12 08:38:30.404 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.WnioskiController.PostWniosek (krzysztofb)'
+2023-09-12 08:38:30.462 +02:00 [ERR] Ilość dni nie zgadza się z podanymi datami
+2023-09-12 08:38:30.466 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7128/api/Wnioski/upload multipart/form-data;+boundary=----WebKitFormBoundarykXUuyyTsvGsQSVQQ 936571 - 422 - application/json 1989.4853ms

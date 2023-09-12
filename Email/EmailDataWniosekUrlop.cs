@@ -6,7 +6,7 @@ namespace krzysztofb.Email
     /// <summary>
     /// Model zawierający dane do wysłania wiadomości email rozszerzony o możliwość dodania załącznika przystosowany do wysyłania wiadomości o zaakceptowaniu wniosku
     /// </summary>
-    public class EmailDataWniosek : EmailDataWithAttachment
+    public class EmailDataWniosekUrlop : EmailDataWithAttachment
     {
         /// <summary>
         /// Metoda budująca wiadomość email o zaakceptowaniu wniosku
@@ -17,15 +17,18 @@ namespace krzysztofb.Email
         /// <param name="przelozony">Obiekt UżytkownikDTo zawierający dane przełożonego osoby zgłaszającej</param>
         /// <param name="attachments">IformFileCollection zawierający załączniki do maila</param>
         /// <returns></returns>
-        public static EmailDataWniosek BuildMail(Wniosek wniosek, UzytkownikDTO osobaZglaszajaca, UzytkownikDTO osobaAkceptujaca, UzytkownikDTO przelozony, IFormFileCollection attachments)
+        public static EmailDataWniosekUrlop BuildMail(Wniosek wniosek, UzytkownikDTO osobaZglaszajaca, UzytkownikDTO osobaAkceptujaca, UzytkownikDTO przelozony, IFormFileCollection attachments)
         {
-            return new EmailDataWniosek
+
+            return new EmailDataWniosekUrlop
             {
                 EmailToId = przelozony.Email,
                 EmailToName = przelozony.Imie + " " + przelozony.Nazwisko,
-                EmailBody = "Wniosek o nazwie: " + wniosek.Nazwa +
-           "\n Użytkownika: " + osobaZglaszajaca.Imie + " " + osobaZglaszajaca.Nazwisko +
-           "\n Został zaakceptowany przez: " + osobaAkceptujaca.Imie + " " + osobaAkceptujaca.Nazwisko,
+                EmailBody = "Wniosek o urlop: " + wniosek.Nazwa + "\no numerze ewidencyjnym: " + wniosek.NumerEwidencyjny +
+                "\nUżytkownika: " + osobaZglaszajaca.Imie + " " + osobaZglaszajaca.Nazwisko +
+                " \nwypełniony dnia: " + wniosek.DataWypelnienia.Value.ToShortDateString() + " \nw liczbie dni: " + wniosek.IloscDni +
+                "\nod: " + wniosek.DataRozpoczecia.Value.ToShortDateString() + " do: " + wniosek.DataZakonczenia.Value.ToShortDateString() +
+           "\nZostał zaakceptowany przez: " + osobaAkceptujaca.Imie + " " + osobaAkceptujaca.Nazwisko,
                 EmailSubject = "Wniosek " + osobaZglaszajaca.Imie + " " + osobaZglaszajaca.Nazwisko + " został zaakceptowany",
                 EmailAttachments = attachments
             };

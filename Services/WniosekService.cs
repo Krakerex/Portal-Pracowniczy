@@ -1,12 +1,12 @@
 ﻿using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas.Parser;
+using krzysztofb.CustomExceptions;
 using krzysztofb.Email;
 using krzysztofb.Models;
 using krzysztofb.Models.DTO;
 using krzysztofb.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol;
 using System.Globalization;
 
 namespace krzysztofb.Services
@@ -18,7 +18,7 @@ namespace krzysztofb.Services
         IDatabaseDelete<WniosekDTO>,
         IDatabaseCreate<WniosekDTO>,
         IDatabaseFileSave<WniosekDTO>,
-        IPdfToDatabase,
+        IPdfToDatabase<WniosekDTO>,
         IDatabaseFileRead
     {
         private readonly WnioskiContext _context;
@@ -42,10 +42,6 @@ namespace krzysztofb.Services
         /// <exception cref="BadHttpRequestException"></exception>
         public WniosekDTO AddFile(WniosekDTO wniosek, IFormFile file)
         {
-            if (file.FileName.Contains(".pdf") == true)
-            {
-                CheckPDFType(file);
-            }
             if (file == null)
             {
                 throw new BadHttpRequestException("Brak pliku");
@@ -127,13 +123,13 @@ namespace krzysztofb.Services
             {
                 throw new BadHttpRequestException("Wniosek o podanym id nie istnieje");
             }
-
+            wniosek.IdOsobyAkceptujacej = idKierownik;
             UzytkownikDTO osobaZglaszajaca = _uzytkownikService.Read(wniosek.IdOsobyZglaszajacej.Value);
             UzytkownikDTO osobaAkceptujaca = _uzytkownikService.Read(idKierownik);
             UzytkownikDTO przelozony = _uzytkownikService.Read(osobaZglaszajaca.IdPrzelozonego.Value);
             var file = ReadFile(idWniosek);
             IFormFileCollection attachments = new FormFileCollection() { file };
-            EmailDataWniosek email = EmailDataWniosek.BuildMail(wniosek, osobaZglaszajaca, osobaAkceptujaca, przelozony, attachments);
+            EmailDataWniosekUrlop email = EmailDataWniosekUrlop.BuildMail(wniosek, osobaZglaszajaca, osobaAkceptujaca, przelozony, attachments);
             _emailService.SendEmailWithAttachment(email);
             _context.SaveChanges();
 
@@ -180,45 +176,31 @@ namespace krzysztofb.Services
             fileResult.FileDownloadName = wniosek.FileName;
             return fileResult;
         }
-
-        public string CheckPDFType(IFormFile file)
+        public WniosekDTO GetPdfData(StringReader document)
         {
-
-            file.CopyToAsync(_memoryStream);
-            //convert file to System.IO.FIleInfo
-            FileInfo fileInfo = new FileInfo(file.FileName);
-            PdfReader reader = new PdfReader(fileInfo);
-
-            PdfDocument doc = new PdfDocument(reader);
-            string text = PdfTextExtractor.GetTextFromPage(doc.GetPage(1));
-            doc.Close();
-            var document = new StringReader(text);
-            WniosekUrlopDTO wniosekUrlop = new WniosekUrlopDTO();
+            WniosekDTO wniosekUrlop = new WniosekDTO();
             string[] imieNazwisko = new string[2];
             string line = "";
             string previousLine = "";
-            DateTime date;
             while ((line = document.ReadLine()) != null)
             {
                 if (line.Contains("(nazwisko i imię)"))
                 {
-                    wniosekUrlop.NrEwidencyjny = Int32.Parse(previousLine.Split(" Nr ewid.")[1]);
+                    wniosekUrlop.Nr_ewidencyjny = Int32.Parse(previousLine.Split(" Nr ewid.")[1]);
                     imieNazwisko = previousLine.Split(" Nr ewid.")[0].Split(" ");
                 }
                 else if (line.Contains("w ilości"))
                 {
-                    wniosekUrlop.IloscDni = Int32.Parse(line.Split("w ilości ")[1].Split(" dni.")[0]);
+                    wniosekUrlop.Ilosc_dni = Int32.Parse(line.Split("w ilości ")[1].Split(" dni.")[0]);
                 }
                 else if (line.Contains("Elbląg, dnia "))
                 {
-                    wniosekUrlop.DataWypelnienia = DateTime.Parse(line.Split("Elbląg, dnia ")[1]);
+                    wniosekUrlop.Data_wypelnienia = DateOnly.FromDateTime(DateTime.Parse(line.Split("Elbląg, dnia ")[1]));
                 }
                 else if (line.Contains("Od dnia"))
                 {
-                    wniosekUrlop.PoczatekUrlopu = DateTime.ParseExact(line.Split("Od dnia ")[1].Split(" Do dnia ")[0].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
-                    date = DateTime.ParseExact(line.Split("Od dnia ")[1].Split(" Do dnia ")[0].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
-                    wniosekUrlop.PoczatekUrlopu = date;
-                    wniosekUrlop.KoniecUrlopu = DateTime.ParseExact(line.Split("Do dnia ")[1].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal);
+                    wniosekUrlop.Data_rozpoczecia = DateOnly.FromDateTime(DateTime.ParseExact(line.Split("Od dnia ")[1].Split(" Do dnia ")[0].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal));
+                    wniosekUrlop.Data_zakonczenia = DateOnly.FromDateTime(DateTime.ParseExact(line.Split("Do dnia ")[1].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal));
 
                 }
                 else
@@ -226,14 +208,38 @@ namespace krzysztofb.Services
                     previousLine = line;
                 }
             }
-            //split name string to get Nr ewid.
-
-            //check if user with given name exists in database
-            if (_context.Uzytkownik.Where(x => x.Imie == imieNazwisko[0] && x.Nazwisko == imieNazwisko[1]).FirstOrDefault() == null)
+            int id_osoby_zglaszajacej = _context.Uzytkownik.Where(x => x.Imie == imieNazwisko[0] && x.Nazwisko == imieNazwisko[1]).FirstOrDefault().Id;
+            if (id_osoby_zglaszajacej == null)
             {
                 throw new BadHttpRequestException("Użytkownik o podanym imieniu i nazwisku nie istnieje");
             }
-            throw new Exception(wniosekUrlop.ToJson());
+            else
+            {
+                wniosekUrlop.IdOsobyZglaszajacej = id_osoby_zglaszajacej;
+            }
+            if (wniosekUrlop.Data_zakonczenia.Value.DayNumber - wniosekUrlop.Data_rozpoczecia.Value.DayNumber != wniosekUrlop.Ilosc_dni)
+            {
+                throw new PdfToDatabaseException("Ilość dni nie zgadza się z podanymi datami");
+            }
+            if (wniosekUrlop.Data_rozpoczecia.Value.DayNumber - wniosekUrlop.Data_wypelnienia.Value.DayNumber < 1)
+            {
+                throw new PdfToDatabaseException("Data wypełnienia nie zgadza się z podaną datą rozpoczęcia");
+            }
+            return wniosekUrlop;
+        }
+
+        public WniosekDTO LoadPdf(IFormFile file)
+        {
+
+            file.CopyToAsync(_memoryStream);
+            //convert file to System.IO.FIleInfo
+            FileInfo fileInfo = new FileInfo(file.FileName);
+            PdfReader reader = new PdfReader(fileInfo);
+            PdfDocument doc = new PdfDocument(reader);
+            string text = PdfTextExtractor.GetTextFromPage(doc.GetPage(1));
+            doc.Close();
+            var document = new StringReader(text);
+            return GetPdfData(document);
 
         }
     }

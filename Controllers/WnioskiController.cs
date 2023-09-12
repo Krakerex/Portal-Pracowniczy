@@ -64,17 +64,11 @@ namespace krzysztofb.Controllers
         /// <returns>Dodany wniosek WniosekDTO</returns>
         // POST: api/Wnioski
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("{idSender}")]
-        public WniosekDTO PostWniosek(IFormFile file, int idSender)
+        [HttpPost("upload")]
+        public WniosekDTO PostWniosek(IFormFile file)
         {
-            var wniosek = new WniosekDTO
-            {
-                IdOsobyZglaszajacej = idSender,
-                IdOsobyAkceptujacej = null
-            };
-            wniosek = _wniosekServices.AddFile(wniosek, file);
             Response.StatusCode = 201;
-            return _wniosekServices.Create(wniosek);
+            return _wniosekServices.Create(_wniosekServices.AddFile(_wniosekServices.LoadPdf(file), file));
         }
         /// <summary>
         /// Metoda służąca do usuwania wniosków z bazy danych
