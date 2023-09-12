@@ -1,7 +1,6 @@
 ﻿namespace krzysztofb.Services
 {
     using krzysztofb.CustomExceptions;
-    using Microsoft.EntityFrameworkCore;
     using System.Net;
     using System.Text.Json;
 
@@ -55,10 +54,10 @@
                     message = "Bad request";
                     _logger.LogError(exception.Message, message, DateTime.UtcNow);
                 }
-                else if (exception is DbUpdateException)
+                else if (exception is DatabaseValidationException)
                 {
-                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    message = "Bad request";
+                    context.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
+                    message = "Database validation failed";
                     _logger.LogError(exception.Message, message, DateTime.UtcNow);
                 }
                 else if (exception is PdfToDatabaseException)

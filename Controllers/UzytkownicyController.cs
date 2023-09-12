@@ -14,7 +14,7 @@ namespace krzysztofb.Controllers
     public class UzytkownicyController : ControllerBase
     {
         private readonly UzytkownikService _uzytkownikService;
-
+        public static int StatusCode = 200;
         public UzytkownicyController(WnioskiContext context, UzytkownikService uzytkownikService)
         {
             _uzytkownikService = uzytkownikService;
@@ -52,8 +52,9 @@ namespace krzysztofb.Controllers
 
         public UzytkownikDTO PutUzytkownik(int id, [ValidateNever] UzytkownikDTO uzytkownik)
         {
-            Response.StatusCode = 201;
-            return _uzytkownikService.Update(id, uzytkownik);
+            UzytkownikDTO uzytkownikDTO = _uzytkownikService.Update(id, uzytkownik);
+            Response.StatusCode = StatusCode;
+            return uzytkownikDTO;
         }
         /// <summary>
         /// Metoda służąca do dodawania użytkownika do bazy danych
@@ -65,9 +66,10 @@ namespace krzysztofb.Controllers
         [HttpPost]
         public UzytkownikDTO PostUzytkownik(UzytkownikDTO uzytkownik)
         {
-            Response.StatusCode = 201;
 
+            Response.StatusCode = StatusCode;
             return _uzytkownikService.Create(uzytkownik);
+
         }
         /// <summary>
         /// Metoda służąca do usuwania użytkownika z bazy danych

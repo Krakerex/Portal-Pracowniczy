@@ -288,3 +288,77 @@ WHERE [Id] = @p1;
 2023-09-12 09:34:54.294 +02:00 [INF] Executed action krzysztofb.Controllers.UzytkownicyController.PutUzytkownik (krzysztofb) in 35.3038ms
 2023-09-12 09:34:54.295 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.UzytkownicyController.PutUzytkownik (krzysztofb)'
 2023-09-12 09:34:54.296 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/uzytkownicy/2 application/json 22 - 201 - application/json;+charset=utf-8 56.0358ms
+2023-09-12 09:59:00.775 +02:00 [INF] Now listening on: https://localhost:7128
+2023-09-12 09:59:00.808 +02:00 [INF] Now listening on: http://localhost:5213
+2023-09-12 09:59:00.810 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-09-12 09:59:00.811 +02:00 [INF] Hosting environment: Development
+2023-09-12 09:59:00.812 +02:00 [INF] Content root path: C:\Users\ipkrzbli\source\repos\krzysztofb
+2023-09-12 09:59:01.512 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-12 09:59:01.757 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-12 09:59:01.762 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 253.3000ms
+2023-09-12 09:59:01.774 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 16.5065ms
+2023-09-12 09:59:01.775 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-12 09:59:01.798 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 22.1210ms
+2023-09-12 09:59:01.875 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-12 09:59:01.998 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 122.6744ms
+2023-09-12 09:59:12.097 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7128/api/uzytkownicy/2 application/json 15
+2023-09-12 09:59:12.107 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.UzytkownicyController.PutUzytkownik (krzysztofb)'
+2023-09-12 09:59:12.125 +02:00 [INF] Route matched with {action = "PutUzytkownik", controller = "Uzytkownicy"}. Executing controller action with signature krzysztofb.Models.DTO.UzytkownikDTO PutUzytkownik(Int32, krzysztofb.Models.DTO.UzytkownikDTO) on controller krzysztofb.Controllers.UzytkownicyController (krzysztofb).
+2023-09-12 09:59:13.409 +02:00 [INF] Executed DbCommand (33ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 09:59:13.497 +02:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Nazwa]
+FROM [Role] AS [r]
+WHERE [r].[Id] = @__p_0
+2023-09-12 09:59:17.436 +02:00 [INF] Executed action krzysztofb.Controllers.UzytkownicyController.PutUzytkownik (krzysztofb) in 5304.461ms
+2023-09-12 09:59:17.440 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.UzytkownicyController.PutUzytkownik (krzysztofb)'
+2023-09-12 09:59:17.463 +02:00 [ERR] Podana rola nie istnieje
+2023-09-12 09:59:17.479 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/uzytkownicy/2 application/json 15 - 400 - application/json 5382.6357ms
+2023-09-12 09:59:22.414 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7128/api/uzytkownicy/2 application/json 15
+2023-09-12 09:59:22.418 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.UzytkownicyController.PutUzytkownik (krzysztofb)'
+2023-09-12 09:59:22.421 +02:00 [INF] Route matched with {action = "PutUzytkownik", controller = "Uzytkownicy"}. Executing controller action with signature krzysztofb.Models.DTO.UzytkownikDTO PutUzytkownik(Int32, krzysztofb.Models.DTO.UzytkownikDTO) on controller krzysztofb.Controllers.UzytkownicyController (krzysztofb).
+2023-09-12 09:59:22.508 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 09:59:22.514 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [r].[Id], [r].[Nazwa]
+FROM [Role] AS [r]
+WHERE [r].[Id] = @__p_0
+2023-09-12 09:59:22.532 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE 0 = 1
+2023-09-12 09:59:22.644 +02:00 [INF] Executed DbCommand (3ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Uzytkownik] SET [Role] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+2023-09-12 09:59:22.665 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.UzytkownikDTO'.
+2023-09-12 09:59:22.675 +02:00 [INF] Executed action krzysztofb.Controllers.UzytkownicyController.PutUzytkownik (krzysztofb) in 248.9869ms
+2023-09-12 09:59:22.677 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.UzytkownicyController.PutUzytkownik (krzysztofb)'
+2023-09-12 09:59:22.679 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/uzytkownicy/2 application/json 15 - 200 - application/json;+charset=utf-8 264.6183ms
+2023-09-12 09:59:36.832 +02:00 [INF] Request starting HTTP/2 PUT https://localhost:7128/api/uzytkownicy/2 application/json 103
+2023-09-12 09:59:36.833 +02:00 [INF] Executing endpoint 'krzysztofb.Controllers.UzytkownicyController.PutUzytkownik (krzysztofb)'
+2023-09-12 09:59:36.835 +02:00 [INF] Route matched with {action = "PutUzytkownik", controller = "Uzytkownicy"}. Executing controller action with signature krzysztofb.Models.DTO.UzytkownikDTO PutUzytkownik(Int32, krzysztofb.Models.DTO.UzytkownikDTO) on controller krzysztofb.Controllers.UzytkownicyController (krzysztofb).
+2023-09-12 09:59:36.857 +02:00 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 09:59:36.862 +02:00 [INF] Executed DbCommand (0ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[Id], [u].[Email], [u].[Id_Przelozonego], [u].[Imie], [u].[Nazwisko], [u].[Role]
+FROM [Uzytkownik] AS [u]
+WHERE [u].[Id] = @__p_0
+2023-09-12 09:59:36.882 +02:00 [INF] Executed DbCommand (4ms) [Parameters=[@p2='?' (DbType = Int32), @p0='?' (Size = 30) (DbType = AnsiString), @p1='?' (Size = 30) (DbType = AnsiString)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Uzytkownik] SET [Email] = @p0, [Nazwisko] = @p1
+OUTPUT 1
+WHERE [Id] = @p2;
+2023-09-12 09:59:36.887 +02:00 [INF] Executing ObjectResult, writing value of type 'krzysztofb.Models.DTO.UzytkownikDTO'.
+2023-09-12 09:59:36.888 +02:00 [INF] Executed action krzysztofb.Controllers.UzytkownicyController.PutUzytkownik (krzysztofb) in 50.1089ms
+2023-09-12 09:59:36.890 +02:00 [INF] Executed endpoint 'krzysztofb.Controllers.UzytkownicyController.PutUzytkownik (krzysztofb)'
+2023-09-12 09:59:36.891 +02:00 [INF] Request finished HTTP/2 PUT https://localhost:7128/api/uzytkownicy/2 application/json 103 - 200 - application/json;+charset=utf-8 59.5812ms

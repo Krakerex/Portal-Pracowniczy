@@ -57,7 +57,6 @@
         {
             return new Uzytkownik
             {
-                Id = uzytkownik.Id.Value,
                 Imie = uzytkownik.Imie,
                 Nazwisko = uzytkownik.Nazwisko,
                 Email = uzytkownik.Email,
