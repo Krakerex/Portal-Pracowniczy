@@ -33,22 +33,26 @@ namespace krzysztofb.Services
         /// <exception cref="DbUpdateException"></exception>
         public UzytkownikDTO Create(UzytkownikDTO obj)
         {
-            if (_context.Uzytkownik.Find(obj.IdPrzelozonego) == null)
+            switch (_context.Uzytkownik.Find(obj.IdPrzelozonego))
             {
-                throw new DatabaseValidationException("Użytkownik podany za przełożonego nie istnieje");
-            }
-            else if (_context.Uzytkownik.Find(obj.IdPrzelozonego).Role != 2)
-            {
-                int kierownikId = _context.Uzytkownik.Find(obj.IdPrzelozonego).Id;
-                throw new DatabaseValidationException("Użytkownik o id " + kierownikId + " nie jest kierownikiem");
-            }
-            else if (_context.Role.Find(obj.Role) == null)
-            {
-                throw new DatabaseValidationException("Podana rola nie istnieje");
-            }
-            else if (_context.Uzytkownik.FirstOrDefault(x => x.Email == obj.Email) != null)
-            {
-                throw new DatabaseValidationException("Podany email już istnieje w bazie danych");
+                case null:
+                    throw new DatabaseValidationException("Użytkownik podany za przełożonego nie istnieje");
+                default:
+                    if (_context.Uzytkownik.Find(obj.IdPrzelozonego).Role != 2)
+                    {
+                        int kierownikId = _context.Uzytkownik.Find(obj.IdPrzelozonego).Id;
+                        throw new DatabaseValidationException("Użytkownik o id " + kierownikId + " nie jest kierownikiem");
+                    }
+                    else if (_context.Role.Find(obj.Role) == null)
+                    {
+                        throw new DatabaseValidationException("Podana rola nie istnieje");
+                    }
+                    else if (_context.Uzytkownik.FirstOrDefault(x => x.Email == obj.Email) != null)
+                    {
+                        throw new DatabaseValidationException("Podany email już istnieje w bazie danych");
+                    }
+
+                    break;
             }
             _context.Uzytkownik.Add(ModelConverter.ConvertToModel(obj));
             _context.SaveChanges();

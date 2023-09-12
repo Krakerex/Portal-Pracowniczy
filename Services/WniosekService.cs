@@ -44,11 +44,11 @@ namespace krzysztofb.Services
         {
             if (file == null)
             {
-                throw new BadHttpRequestException("Brak pliku");
+                throw new UploadException("Brak pliku");
             }
             if (_context.Uzytkownik.Find(wniosek.IdOsobyZglaszajacej) == null)
             {
-                throw new BadHttpRequestException("Użytkownik wysyłający wniosek nie istnieje");
+                throw new DatabaseValidationException("Użytkownik wysyłający wniosek nie istnieje");
             }
             file.CopyToAsync(_memoryStream);
             wniosek.Nazwa = file.FileName;
@@ -78,7 +78,7 @@ namespace krzysztofb.Services
             var wniosek = _context.Wniosek.Find(id);
             if (wniosek == null)
             {
-                throw new BadHttpRequestException("Wniosek do usunięcia nie znaleziony");
+                throw new DatabaseValidationException("Wniosek do usunięcia nie znaleziony");
             }
 
             _context.Wniosek.Remove(wniosek);
@@ -111,17 +111,21 @@ namespace krzysztofb.Services
             //check if user with idKierownik has role Kierownik
             var wniosek = _context.Wniosek.Find(idWniosek);
             var kierownik = _context.Uzytkownik.Find(idKierownik);
-            if (kierownik == null)
+            switch (kierownik)
             {
-                throw new BadHttpRequestException("Nie podano id kierownika");
-            }
-            else if (kierownik.Role != 2)
-            {
-                throw new BadHttpRequestException("Użytkownik nie jest kierownikiem");
-            }
-            else if (wniosek == null)
-            {
-                throw new BadHttpRequestException("Wniosek o podanym id nie istnieje");
+                case null:
+                    throw new DatabaseValidationException("Nie podano id kierownika");
+                default:
+                    if (kierownik.Role != 2)
+                    {
+                        throw new DatabaseValidationException("Użytkownik o id: " + idKierownik + " nie jest kierownikiem");
+                    }
+                    else if (wniosek == null)
+                    {
+                        throw new DatabaseValidationException("Wniosek o id: " + idWniosek + " nie istnieje");
+                    }
+
+                    break;
             }
             wniosek.IdOsobyAkceptujacej = idKierownik;
             UzytkownikDTO osobaZglaszajaca = _uzytkownikService.Read(wniosek.IdOsobyZglaszajacej.Value);
@@ -146,7 +150,7 @@ namespace krzysztofb.Services
             var wniosek = _context.Wniosek.Find(id);
             if (wniosek == null)
             {
-                throw new BadHttpRequestException("Wniosek o podanym id nie istnieje");
+                throw new DatabaseValidationException("Wniosek o id: " + id + " nie istnieje");
             }
             var stream = new MemoryStream(wniosek.Plik);
             IFormFile file = new FormFile(stream, 0, wniosek.Plik.Length, wniosek.Nazwa, wniosek.Nazwa)
@@ -201,7 +205,6 @@ namespace krzysztofb.Services
                 {
                     wniosekUrlop.Data_rozpoczecia = DateOnly.FromDateTime(DateTime.ParseExact(line.Split("Od dnia ")[1].Split(" Do dnia ")[0].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal));
                     wniosekUrlop.Data_zakonczenia = DateOnly.FromDateTime(DateTime.ParseExact(line.Split("Do dnia ")[1].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal));
-
                 }
                 else
                 {
@@ -211,7 +214,7 @@ namespace krzysztofb.Services
             int id_osoby_zglaszajacej = _context.Uzytkownik.Where(x => x.Imie == imieNazwisko[0] && x.Nazwisko == imieNazwisko[1]).FirstOrDefault().Id;
             if (id_osoby_zglaszajacej == null)
             {
-                throw new BadHttpRequestException("Użytkownik o podanym imieniu i nazwisku nie istnieje");
+                throw new DatabaseValidationException("Użytkownik o podanym imieniu i nazwisku nie istnieje");
             }
             else
             {

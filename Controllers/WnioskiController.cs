@@ -13,7 +13,7 @@ namespace krzysztofb.Controllers
     {
 
         private readonly WniosekService _wniosekServices;
-
+        public static int StatusCode;
         public WnioskiController(WniosekService wniosekServices)
         {
             _wniosekServices = wniosekServices;
