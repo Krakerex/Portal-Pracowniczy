@@ -2,6 +2,7 @@
 using krzysztofb.Models.DTO;
 using krzysztofb.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace krzysztofb.Controllers
 {
@@ -48,7 +49,8 @@ namespace krzysztofb.Controllers
         // PUT: api/Uzytkowniks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public UzytkownikDTO PutUzytkownik(int id, UzytkownikDTO uzytkownik)
+
+        public UzytkownikDTO PutUzytkownik(int id, [ValidateNever] UzytkownikDTO uzytkownik)
         {
             Response.StatusCode = 201;
             return _uzytkownikService.Update(id, uzytkownik);

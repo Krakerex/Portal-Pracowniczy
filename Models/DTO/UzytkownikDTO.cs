@@ -5,19 +5,19 @@
     /// </summary>
     public record UzytkownikDTO
     {
-        public int Id
+        public int? Id
         {
             get;
         }
-        public string Imie
+        public string? Imie
         {
             get; init;
         }
-        public string Nazwisko
+        public string? Nazwisko
         {
             get; init;
         }
-        public string Email
+        public string? Email
         {
             get; init;
         }
