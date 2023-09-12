@@ -14,7 +14,6 @@ namespace krzysztofb.Controllers
     public class UzytkownicyController : ControllerBase
     {
         private readonly UzytkownikService _uzytkownikService;
-        public static int StatusCode = 200;
         public UzytkownicyController(WnioskiContext context, UzytkownikService uzytkownikService)
         {
             _uzytkownikService = uzytkownikService;
@@ -25,9 +24,9 @@ namespace krzysztofb.Controllers
         /// <returns>Lista obiektów UżytkownikDTO</returns>
         // GET: api/Uzytkownicy
         [HttpGet]
-        public List<UzytkownikDTO> GetUzytkownicy()
+        public IActionResult GetUzytkownicy()
         {
-            return _uzytkownikService.Read();
+            return Ok(_uzytkownikService.Read());
         }
         /// <summary>
         /// Metoda zwracająca użytkownika na podstawie id
@@ -36,9 +35,9 @@ namespace krzysztofb.Controllers
         /// <returns>Odczytany UżytkownikDTO</returns>
         // GET: api/Uzytkowniks/5
         [HttpGet("{id}")]
-        public UzytkownikDTO GetUzytkownik(int id)
+        public IActionResult GetUzytkownik(int id)
         {
-            return _uzytkownikService.Read(id);
+            return Ok(_uzytkownikService.Read(id));
         }
         /// <summary>
         /// Metoda służąca do aktualizacji użytkownika
@@ -50,11 +49,10 @@ namespace krzysztofb.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
 
-        public UzytkownikDTO PutUzytkownik(int id, [ValidateNever] UzytkownikDTO uzytkownik)
+        public IActionResult PutUzytkownik(int id, [ValidateNever] UzytkownikDTO uzytkownik)
         {
             UzytkownikDTO uzytkownikDTO = _uzytkownikService.Update(id, uzytkownik);
-            Response.StatusCode = StatusCode;
-            return uzytkownikDTO;
+            return Ok(uzytkownikDTO);
         }
         /// <summary>
         /// Metoda służąca do dodawania użytkownika do bazy danych
@@ -64,11 +62,11 @@ namespace krzysztofb.Controllers
         // POST: api/Uzytkowniks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public UzytkownikDTO PostUzytkownik(UzytkownikDTO uzytkownik)
+        public IActionResult PostUzytkownik(UzytkownikDTO uzytkownik)
         {
 
-            Response.StatusCode = StatusCode;
-            return _uzytkownikService.Create(uzytkownik);
+
+            return Ok(_uzytkownikService.Create(uzytkownik));
 
         }
         /// <summary>
@@ -78,9 +76,9 @@ namespace krzysztofb.Controllers
         /// <returns>Usunięty UżytkownikDTO</returns>
         // DELETE: api/Uzytkowniks/5
         [HttpDelete("{id}")]
-        public UzytkownikDTO DeleteUzytkownik(int id)
+        public IActionResult DeleteUzytkownik(int id)
         {
-            return _uzytkownikService.Delete(id);
+            return Ok(_uzytkownikService.Delete(id));
         }
     }
 }

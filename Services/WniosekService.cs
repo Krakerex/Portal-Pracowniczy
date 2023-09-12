@@ -1,5 +1,4 @@
-﻿using iText.Kernel.Pdf;
-using iText.Kernel.Pdf.Canvas.Parser;
+﻿using krzysztofb.Converters;
 using krzysztofb.CustomExceptions;
 using krzysztofb.Email;
 using krzysztofb.Models;
@@ -7,7 +6,6 @@ using krzysztofb.Models.DTO;
 using krzysztofb.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Globalization;
 
 namespace krzysztofb.Services
 {
@@ -16,9 +14,8 @@ namespace krzysztofb.Services
     /// </summary>
     public class WniosekService :
         IDatabaseDelete<WniosekDTO>,
-        IDatabaseCreate<WniosekDTO>,
         IDatabaseFileSave<WniosekDTO>,
-        IPdfToDatabase<WniosekDTO>,
+        IPdfToDatabaseCreate<Wniosek>,
         IDatabaseFileRead
     {
         private readonly WnioskiContext _context;
@@ -60,12 +57,33 @@ namespace krzysztofb.Services
         /// </summary>
         /// <param name="obj">Obiekt wniosekDTO do zapisania</param>
         /// <returns>Zapisany wniosekDTO</returns>
-        public WniosekDTO Create(WniosekDTO obj)
+        public Wniosek Create(IFormFile file)
         {
-            var entry = _context.Wniosek.Add(ModelConverter.ConvertToModel(obj));
+            WniosekDTO wniosek;
+            string[] imieINazwisko;
+
+            using (StringReader sr = IFormFileToStringReader.LoadPdf(file))
+            {
+                wniosek = IFormFileToStringReader.GetPdfData(sr);
+            }
+            using (StringReader sr = IFormFileToStringReader.LoadPdf(file))
+            {
+                imieINazwisko = IFormFileToStringReader.GetWniosekSender(sr);
+                int id_osoby_zglaszajacej = _context.Uzytkownik.Where(x => x.Imie == imieINazwisko[0] && x.Nazwisko == imieINazwisko[1]).FirstOrDefault().Id;
+                if (id_osoby_zglaszajacej == null)
+                {
+                    throw new DatabaseValidationException("Użytkownik o podanym imieniu i nazwisku nie istnieje");
+                }
+                else
+                {
+                    wniosek.IdOsobyZglaszajacej = id_osoby_zglaszajacej;
+                }
+            }
+            wniosek = AddFile(wniosek, file);
+            var entry = _context.Wniosek.Add(ModelConverter.ConvertToModel(wniosek));
             _context.SaveChanges();
             _context.Entry(entry.Entity).GetDatabaseValues();
-            return ModelConverter.ConvertToDTO(entry.Entity);
+            return entry.Entity;
         }
         /// <summary>
         /// Metoda walidująca i usuwająca wniosek o podanym id
@@ -89,13 +107,13 @@ namespace krzysztofb.Services
         /// Metoda wczytująca wszystkie wnioski z bazy danych do listy
         /// </summary>
         /// <returns>Lista obiektów WniosekDTO</returns>
-        public List<WniosekDTO> Read()
+        public List<Wniosek> Read()
         {
             //read all from model Wniosek
             var wnioski = _context.Wniosek
                .Include(x => x.IdOsobyAkceptujacejNavigation)
                .Include(x => x.IdOsobyZglaszajacejNavigation)
-               .Select(x => ModelConverter.ConvertToDTO(x));
+               .Select(x => x);
             return wnioski
                .ToList();
         }
@@ -179,71 +197,6 @@ namespace krzysztofb.Services
             FileResult fileResult = new FileContentResult(file, "application/pdf");
             fileResult.FileDownloadName = wniosek.FileName;
             return fileResult;
-        }
-        public WniosekDTO GetPdfData(StringReader document)
-        {
-            WniosekDTO wniosekUrlop = new WniosekDTO();
-            string[] imieNazwisko = new string[2];
-            string line = "";
-            string previousLine = "";
-            while ((line = document.ReadLine()) != null)
-            {
-                if (line.Contains("(nazwisko i imię)"))
-                {
-                    wniosekUrlop.Nr_ewidencyjny = Int32.Parse(previousLine.Split(" Nr ewid.")[1]);
-                    imieNazwisko = previousLine.Split(" Nr ewid.")[0].Split(" ");
-                }
-                else if (line.Contains("w ilości"))
-                {
-                    wniosekUrlop.Ilosc_dni = Int32.Parse(line.Split("w ilości ")[1].Split(" dni.")[0]);
-                }
-                else if (line.Contains("Elbląg, dnia "))
-                {
-                    wniosekUrlop.Data_wypelnienia = DateOnly.FromDateTime(DateTime.Parse(line.Split("Elbląg, dnia ")[1]));
-                }
-                else if (line.Contains("Od dnia"))
-                {
-                    wniosekUrlop.Data_rozpoczecia = DateOnly.FromDateTime(DateTime.ParseExact(line.Split("Od dnia ")[1].Split(" Do dnia ")[0].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal));
-                    wniosekUrlop.Data_zakonczenia = DateOnly.FromDateTime(DateTime.ParseExact(line.Split("Do dnia ")[1].Replace('.', '/').Trim(), "d/M/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal));
-                }
-                else
-                {
-                    previousLine = line;
-                }
-            }
-            int id_osoby_zglaszajacej = _context.Uzytkownik.Where(x => x.Imie == imieNazwisko[0] && x.Nazwisko == imieNazwisko[1]).FirstOrDefault().Id;
-            if (id_osoby_zglaszajacej == null)
-            {
-                throw new DatabaseValidationException("Użytkownik o podanym imieniu i nazwisku nie istnieje");
-            }
-            else
-            {
-                wniosekUrlop.IdOsobyZglaszajacej = id_osoby_zglaszajacej;
-            }
-            if (wniosekUrlop.Data_zakonczenia.Value.DayNumber - wniosekUrlop.Data_rozpoczecia.Value.DayNumber != wniosekUrlop.Ilosc_dni)
-            {
-                throw new PdfToDatabaseException("Ilość dni nie zgadza się z podanymi datami");
-            }
-            if (wniosekUrlop.Data_rozpoczecia.Value.DayNumber - wniosekUrlop.Data_wypelnienia.Value.DayNumber < 1)
-            {
-                throw new PdfToDatabaseException("Data wypełnienia nie zgadza się z podaną datą rozpoczęcia");
-            }
-            return wniosekUrlop;
-        }
-
-        public WniosekDTO LoadPdf(IFormFile file)
-        {
-
-            file.CopyToAsync(_memoryStream);
-            //convert file to System.IO.FIleInfo
-            FileInfo fileInfo = new FileInfo(file.FileName);
-            PdfReader reader = new PdfReader(fileInfo);
-            PdfDocument doc = new PdfDocument(reader);
-            string text = PdfTextExtractor.GetTextFromPage(doc.GetPage(1));
-            doc.Close();
-            var document = new StringReader(text);
-            return GetPdfData(document);
-
         }
     }
 }

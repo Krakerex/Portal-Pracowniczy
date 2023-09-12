@@ -46,17 +46,17 @@
                 {
                     case DatabaseValidationException:
                         context.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
-                        message = "Database validation failed";
+                        message = "Database validation failed on given data";
                         _logger.LogError(exception.Message, message, DateTime.UtcNow);
                         break;
                     case PdfToDatabaseException:
                         context.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
-                        message = "Form data isinvalid";
+                        message = "Data validation failed on given form";
                         _logger.LogError(exception.Message, message, DateTime.UtcNow);
                         break;
                     case UploadException:
                         context.Response.StatusCode = (int)HttpStatusCode.Conflict;
-                        message = "File is invalid";
+                        message = "File missing or invalid";
                         _logger.LogError(exception.Message, message, DateTime.UtcNow);
                         break;
                     default:
