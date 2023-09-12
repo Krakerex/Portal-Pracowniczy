@@ -7,7 +7,7 @@ namespace krzysztofb.Controllers
     /// <summary>
     ///Controller obsługujący operacje na wnioskach
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/wnioski")]
     [ApiController]
     public class WnioskiController : ControllerBase
     {
@@ -64,7 +64,7 @@ namespace krzysztofb.Controllers
         /// <returns>Dodany wniosek WniosekDTO</returns>
         // POST: api/Wnioski
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("upload")]
+        [HttpPost]
         public WniosekDTO PostWniosek(IFormFile file)
         {
             Response.StatusCode = 201;

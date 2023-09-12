@@ -1,0 +1,13 @@
+2023-09-12 09:07:57.525 +02:00 [INF] Now listening on: https://localhost:7128
+2023-09-12 09:07:57.559 +02:00 [INF] Now listening on: http://localhost:5213
+2023-09-12 09:07:57.562 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-09-12 09:07:57.564 +02:00 [INF] Hosting environment: Development
+2023-09-12 09:07:57.565 +02:00 [INF] Content root path: C:\Users\ipkrzbli\source\repos\krzysztofb
+2023-09-12 09:07:58.430 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/index.html - -
+2023-09-12 09:07:58.693 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - -
+2023-09-12 09:07:58.697 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/index.html - - - 200 - text/html;charset=utf-8 269.6990ms
+2023-09-12 09:07:58.706 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_framework/aspnetcore-browser-refresh.js - - - 200 12352 application/javascript;+charset=utf-8 13.3437ms
+2023-09-12 09:07:58.713 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/_vs/browserLink - -
+2023-09-12 09:07:58.755 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 42.1429ms
+2023-09-12 09:07:58.984 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - -
+2023-09-12 09:07:59.111 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7128/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 126.3802ms

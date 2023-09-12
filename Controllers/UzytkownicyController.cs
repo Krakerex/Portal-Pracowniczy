@@ -8,7 +8,7 @@ namespace krzysztofb.Controllers
     /// <summary>
     /// Controller obsługujący operacje na użytkownikach
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/uzytkownicy")]
     [ApiController]
     public class UzytkownicyController : ControllerBase
     {
