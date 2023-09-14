@@ -1,5 +1,7 @@
 ﻿using krzysztofb.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace krzysztofb.Controllers
 {
@@ -10,12 +12,13 @@ namespace krzysztofb.Controllers
     [ApiController]
     public class WnioskiController : ControllerBase
     {
-
         private readonly WniosekService _wniosekServices;
+
         public WnioskiController(WniosekService wniosekServices)
         {
             _wniosekServices = wniosekServices;
         }
+
         /// <summary>
         /// Metoda zwracająca listę wniosków WniosekDTO
         /// </summary>
@@ -28,7 +31,6 @@ namespace krzysztofb.Controllers
             return Ok(wniosek);
         }
 
-
         /// <summary>
         /// Metoda pobierająca plik z wnioskiem na podstawie id
         /// </summary>
@@ -38,10 +40,9 @@ namespace krzysztofb.Controllers
         [HttpGet("{id}")]
         public FileResult GetWniosek(int id)
         {
-
             return _wniosekServices.DownloadFile(id);
-
         }
+
         /// <summary>
         /// Metoda służąca do akceptacji wniosków przez kierowników
         /// </summary>
@@ -50,11 +51,15 @@ namespace krzysztofb.Controllers
         /// <returns>Zaakceptowany wniosek WniosekDTO</returns>
         // PUT: api/Wnioski/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{idWniosek}/user/{idKierownik}")]
-        public IActionResult PutWniosek(int idWniosek, int idKierownik)
+        [HttpPut("{idWniosek}")]
+        [Authorize(Roles = "Kierownik")]
+        public async Task<IActionResult> PutWniosek(int idWniosek)
         {
-            return Ok(_wniosekServices.Accept(idWniosek, idKierownik));
+            int id = Int32.Parse(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+            _wniosekServices.Accept(idWniosek, id);
+            return await Task.FromResult(Ok());
         }
+
         /// <summary>
         /// Metoda słuząca do dodawania wniosków do bazy danych
         /// </summary>
@@ -68,6 +73,7 @@ namespace krzysztofb.Controllers
         {
             return Ok(_wniosekServices.Create(file));
         }
+
         /// <summary>
         /// Metoda służąca do usuwania wniosków z bazy danych
         /// </summary>

@@ -35,6 +35,32 @@
                 );
         }
 
+        public static UzytkownikDTO ConvertToDTO(UzytkownikCreateDTO uzytkownik, int id)
+        {
+            return new UzytkownikDTO
+                (
+                id,
+                uzytkownik.Imie,
+                uzytkownik.Nazwisko,
+                uzytkownik.Email,
+                uzytkownik.Role,
+                uzytkownik.IdPrzelozonego
+                );
+        }
+
+        public static Uzytkownik ConvertToModel(UzytkownikCreateDTO uzytkownik)
+        {
+            return new Uzytkownik
+            {
+                Imie = uzytkownik.Imie,
+                Nazwisko = uzytkownik.Nazwisko,
+                Email = uzytkownik.Email,
+                Role = uzytkownik.Role,
+                IdPrzelozonego = uzytkownik.IdPrzelozonego,
+                PasswordHash = uzytkownik.Password
+            };
+        }
+
         public static Wniosek ConvertToModel(WniosekDTO wniosek)
         {
             return new Wniosek

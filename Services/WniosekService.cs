@@ -22,14 +22,15 @@ namespace krzysztofb.Services
         private readonly MemoryStream _memoryStream;
         private readonly UzytkownikService _uzytkownikService;
         IEmailService _emailService = null;
+
         public WniosekService(WnioskiContext context, MemoryStream memoryStream, UzytkownikService userTable, IEmailService emailService)
         {
             _context = context;
             _memoryStream = memoryStream;
             _uzytkownikService = userTable;
             _emailService = emailService;
-
         }
+
         /// <summary>
         /// Metoda służąca do walidacji i dodania pliku jak pole obiektu WniosekDTO
         /// </summary>
@@ -52,6 +53,7 @@ namespace krzysztofb.Services
             wniosek.Plik = _memoryStream.ToArray();
             return wniosek;
         }
+
         /// <summary>
         /// Metoda zapisująca obiekt wniosekDTO do bazy danych
         /// </summary>
@@ -85,6 +87,7 @@ namespace krzysztofb.Services
             _context.Entry(entry.Entity).GetDatabaseValues();
             return entry.Entity;
         }
+
         /// <summary>
         /// Metoda walidująca i usuwająca wniosek o podanym id
         /// </summary>
@@ -103,6 +106,7 @@ namespace krzysztofb.Services
             _context.SaveChanges();
             return ModelConverter.ConvertToDTO(wniosek);
         }
+
         /// <summary>
         /// Metoda wczytująca wszystkie wnioski z bazy danych do listy
         /// </summary>
@@ -117,6 +121,7 @@ namespace krzysztofb.Services
             return wnioski
                .ToList();
         }
+
         /// <summary>
         /// Metoda walidująca i zmieniająca status wniosku na zaakceptowany
         /// </summary>
@@ -124,7 +129,7 @@ namespace krzysztofb.Services
         /// <param name="idKierownik">Id kierownika akceptującego wniosek</param>
         /// <returns>Zaakceptowany WniosekDTO</returns>
         /// <exception cref="BadHttpRequestException"></exception>
-        public WniosekDTO Accept(int idWniosek, int idKierownik)
+        public async void Accept(int idWniosek, int idKierownik)
         {
             //check if user with idKierownik has role Kierownik
             var wniosek = _context.Wniosek.Find(idWniosek);
@@ -154,9 +159,8 @@ namespace krzysztofb.Services
             EmailDataWniosekUrlop email = EmailDataWniosekUrlop.BuildMail(wniosek, osobaZglaszajaca, osobaAkceptujaca, przelozony, attachments);
             _emailService.SendEmailWithAttachment(email);
             _context.SaveChanges();
-
-            return ModelConverter.ConvertToDTO(wniosek);
         }
+
         /// <summary>
         /// Metoda walidująca i wczytująca plik z wniosku o podanym id
         /// </summary>
@@ -179,6 +183,7 @@ namespace krzysztofb.Services
             };
             return file;
         }
+
         /// <summary>
         /// Metoda pobierająca plik z wnioskiem na podstawie id
         /// </summary>
@@ -186,7 +191,6 @@ namespace krzysztofb.Services
         /// <returns>FileResult pliku do pobrania</returns>
         public FileResult DownloadFile(int id)
         {
-
             byte[] file;
             var wniosek = ReadFile(id);
             using (MemoryStream memoryStream = new MemoryStream())
