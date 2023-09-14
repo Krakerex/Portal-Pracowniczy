@@ -1,4 +1,6 @@
-﻿using krzysztofb.Email;
+﻿using krzysztofb.Converters;
+using krzysztofb.CustomExceptions;
+using krzysztofb.Email;
 using krzysztofb.Models;
 using krzysztofb.Models.DTO;
 using krzysztofb.Services.Interfaces;
@@ -12,8 +14,8 @@ namespace krzysztofb.Services
     /// </summary>
     public class WniosekService :
         IDatabaseDelete<WniosekDTO>,
-        IDatabaseCreate<WniosekDTO>,
         IDatabaseFileSave<WniosekDTO>,
+        IPdfToDatabaseCreate<Wniosek>,
         IDatabaseFileRead
     {
         private readonly WnioskiContext _context;
@@ -39,11 +41,11 @@ namespace krzysztofb.Services
         {
             if (file == null)
             {
-                throw new BadHttpRequestException("Brak pliku");
+                throw new UploadException("Brak pliku");
             }
             if (_context.Uzytkownik.Find(wniosek.IdOsobyZglaszajacej) == null)
             {
-                throw new BadHttpRequestException("Użytkownik wysyłający wniosek nie istnieje");
+                throw new DatabaseValidationException("Użytkownik wysyłający wniosek nie istnieje");
             }
             file.CopyToAsync(_memoryStream);
             wniosek.Nazwa = file.FileName;
@@ -55,12 +57,33 @@ namespace krzysztofb.Services
         /// </summary>
         /// <param name="obj">Obiekt wniosekDTO do zapisania</param>
         /// <returns>Zapisany wniosekDTO</returns>
-        public WniosekDTO Create(WniosekDTO obj)
+        public Wniosek Create(IFormFile file)
         {
-            var entry = _context.Wniosek.Add(ModelConverter.ConvertToModel(obj));
+            WniosekDTO wniosek;
+            string[] imieINazwisko;
+
+            using (StringReader sr = IFormFileToStringReader.LoadPdf(file))
+            {
+                wniosek = IFormFileToStringReader.GetPdfData(sr);
+            }
+            using (StringReader sr = IFormFileToStringReader.LoadPdf(file))
+            {
+                imieINazwisko = IFormFileToStringReader.GetWniosekSender(sr);
+                int id_osoby_zglaszajacej = _context.Uzytkownik.Where(x => x.Imie == imieINazwisko[0] && x.Nazwisko == imieINazwisko[1]).FirstOrDefault().Id;
+                if (id_osoby_zglaszajacej == null)
+                {
+                    throw new DatabaseValidationException("Użytkownik o podanym imieniu i nazwisku nie istnieje");
+                }
+                else
+                {
+                    wniosek.IdOsobyZglaszajacej = id_osoby_zglaszajacej;
+                }
+            }
+            wniosek = AddFile(wniosek, file);
+            var entry = _context.Wniosek.Add(ModelConverter.ConvertToModel(wniosek));
             _context.SaveChanges();
             _context.Entry(entry.Entity).GetDatabaseValues();
-            return ModelConverter.ConvertToDTO(entry.Entity);
+            return entry.Entity;
         }
         /// <summary>
         /// Metoda walidująca i usuwająca wniosek o podanym id
@@ -73,7 +96,7 @@ namespace krzysztofb.Services
             var wniosek = _context.Wniosek.Find(id);
             if (wniosek == null)
             {
-                throw new BadHttpRequestException("Wniosek do usunięcia nie znaleziony");
+                throw new DatabaseValidationException("Wniosek do usunięcia nie znaleziony");
             }
 
             _context.Wniosek.Remove(wniosek);
@@ -84,13 +107,13 @@ namespace krzysztofb.Services
         /// Metoda wczytująca wszystkie wnioski z bazy danych do listy
         /// </summary>
         /// <returns>Lista obiektów WniosekDTO</returns>
-        public List<WniosekDTO> Read()
+        public List<Wniosek> Read()
         {
             //read all from model Wniosek
             var wnioski = _context.Wniosek
                .Include(x => x.IdOsobyAkceptujacejNavigation)
                .Include(x => x.IdOsobyZglaszajacejNavigation)
-               .Select(x => ModelConverter.ConvertToDTO(x));
+               .Select(x => x);
             return wnioski
                .ToList();
         }
@@ -106,25 +129,29 @@ namespace krzysztofb.Services
             //check if user with idKierownik has role Kierownik
             var wniosek = _context.Wniosek.Find(idWniosek);
             var kierownik = _context.Uzytkownik.Find(idKierownik);
-            if (kierownik == null)
+            switch (kierownik)
             {
-                throw new BadHttpRequestException("Nie podano id kierownika");
-            }
-            else if (kierownik.Role != 2)
-            {
-                throw new BadHttpRequestException("Użytkownik nie jest kierownikiem");
-            }
-            else if (wniosek == null)
-            {
-                throw new BadHttpRequestException("Wniosek o podanym id nie istnieje");
-            }
+                case null:
+                    throw new DatabaseValidationException("Nie podano id kierownika");
+                default:
+                    if (kierownik.Role != 2)
+                    {
+                        throw new DatabaseValidationException("Użytkownik o id: " + idKierownik + " nie jest kierownikiem");
+                    }
+                    else if (wniosek == null)
+                    {
+                        throw new DatabaseValidationException("Wniosek o id: " + idWniosek + " nie istnieje");
+                    }
 
+                    break;
+            }
+            wniosek.IdOsobyAkceptujacej = idKierownik;
             UzytkownikDTO osobaZglaszajaca = _uzytkownikService.Read(wniosek.IdOsobyZglaszajacej.Value);
             UzytkownikDTO osobaAkceptujaca = _uzytkownikService.Read(idKierownik);
             UzytkownikDTO przelozony = _uzytkownikService.Read(osobaZglaszajaca.IdPrzelozonego.Value);
             var file = ReadFile(idWniosek);
             IFormFileCollection attachments = new FormFileCollection() { file };
-            EmailDataWniosek email = EmailDataWniosek.BuildMail(wniosek, osobaZglaszajaca, osobaAkceptujaca, przelozony, attachments);
+            EmailDataWniosekUrlop email = EmailDataWniosekUrlop.BuildMail(wniosek, osobaZglaszajaca, osobaAkceptujaca, przelozony, attachments);
             _emailService.SendEmailWithAttachment(email);
             _context.SaveChanges();
 
@@ -141,7 +168,7 @@ namespace krzysztofb.Services
             var wniosek = _context.Wniosek.Find(id);
             if (wniosek == null)
             {
-                throw new BadHttpRequestException("Wniosek o podanym id nie istnieje");
+                throw new DatabaseValidationException("Wniosek o id: " + id + " nie istnieje");
             }
             var stream = new MemoryStream(wniosek.Plik);
             IFormFile file = new FormFile(stream, 0, wniosek.Plik.Length, wniosek.Nazwa, wniosek.Nazwa)

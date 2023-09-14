@@ -1,5 +1,4 @@
-﻿using krzysztofb.Models.DTO;
-using krzysztofb.Services;
+﻿using krzysztofb.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace krzysztofb.Controllers
@@ -7,13 +6,12 @@ namespace krzysztofb.Controllers
     /// <summary>
     ///Controller obsługujący operacje na wnioskach
     /// </summary>
-    [Route("api/[controller]")]
+    [Route("api/wnioski")]
     [ApiController]
     public class WnioskiController : ControllerBase
     {
 
         private readonly WniosekService _wniosekServices;
-
         public WnioskiController(WniosekService wniosekServices)
         {
             _wniosekServices = wniosekServices;
@@ -24,11 +22,13 @@ namespace krzysztofb.Controllers
         /// <returns>Lista obiektów WniosekDTO</returns>
         // GET: api/Wnioski
         [HttpGet]
-        public List<WniosekDTO> GetWnioski()
+        public IActionResult GetWnioski()
         {
             var wniosek = _wniosekServices.Read();
-            return wniosek;
+            return Ok(wniosek);
         }
+
+
         /// <summary>
         /// Metoda pobierająca plik z wnioskiem na podstawie id
         /// </summary>
@@ -51,10 +51,9 @@ namespace krzysztofb.Controllers
         // PUT: api/Wnioski/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{idWniosek}/user/{idKierownik}")]
-        public WniosekDTO PutWniosek(int idWniosek, int idKierownik)
+        public IActionResult PutWniosek(int idWniosek, int idKierownik)
         {
-            Response.StatusCode = 201;
-            return _wniosekServices.Accept(idWniosek, idKierownik);
+            return Ok(_wniosekServices.Accept(idWniosek, idKierownik));
         }
         /// <summary>
         /// Metoda słuząca do dodawania wniosków do bazy danych
@@ -64,17 +63,10 @@ namespace krzysztofb.Controllers
         /// <returns>Dodany wniosek WniosekDTO</returns>
         // POST: api/Wnioski
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("{idSender}")]
-        public WniosekDTO PostWniosek(IFormFile file, int idSender)
+        [HttpPost]
+        public IActionResult PostWniosek(IFormFile file)
         {
-            var wniosek = new WniosekDTO
-            {
-                IdOsobyZglaszajacej = idSender,
-                IdOsobyAkceptujacej = null
-            };
-            wniosek = _wniosekServices.AddFile(wniosek, file);
-            Response.StatusCode = 201;
-            return _wniosekServices.Create(wniosek);
+            return Ok(_wniosekServices.Create(file));
         }
         /// <summary>
         /// Metoda służąca do usuwania wniosków z bazy danych
@@ -83,10 +75,9 @@ namespace krzysztofb.Controllers
         /// <returns>Usunięty wniosek WniosekDTO</returns>
         // DELETE: api/Wnioski/5
         [HttpDelete("{id}")]
-        public WniosekDTO DeleteWniosek(int id)
+        public IActionResult DeleteWniosek(int id)
         {
-            Response.StatusCode = 200;
-            return _wniosekServices.Delete(id);
+            return Ok(_wniosekServices.Delete(id));
         }
     }
 }

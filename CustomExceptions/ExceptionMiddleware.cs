@@ -1,6 +1,6 @@
 ﻿namespace krzysztofb.Services
 {
-    using Microsoft.EntityFrameworkCore;
+    using krzysztofb.CustomExceptions;
     using System.Net;
     using System.Text.Json;
 
@@ -42,29 +42,28 @@
             {
                 context.Response.ContentType = "application/json";
                 string message;
-                if (exception is NullReferenceException)
+                switch (exception)
                 {
-                    context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-                    message = "Not Found";
-                    _logger.LogError(exception.Message, message, DateTime.UtcNow);
-                }
-                else if (exception is BadHttpRequestException)
-                {
-                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    message = "Bad request";
-                    _logger.LogError(exception.Message, message, DateTime.UtcNow);
-                }
-                else if (exception is DbUpdateException)
-                {
-                    context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
-                    message = "Bad request";
-                    _logger.LogError(exception.Message, message, DateTime.UtcNow);
-                }
-                else
-                {
-                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-                    message = "Internal server error";
-                    _logger.LogError(exception.Message, message, DateTime.UtcNow);
+                    case DatabaseValidationException:
+                        context.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
+                        message = "Database validation failed on given data";
+                        _logger.LogError(exception.Message, message, DateTime.UtcNow);
+                        break;
+                    case PdfToDatabaseException:
+                        context.Response.StatusCode = (int)HttpStatusCode.UnprocessableEntity;
+                        message = "Data validation failed on given form";
+                        _logger.LogError(exception.Message, message, DateTime.UtcNow);
+                        break;
+                    case UploadException:
+                        context.Response.StatusCode = (int)HttpStatusCode.Conflict;
+                        message = "File missing or invalid";
+                        _logger.LogError(exception.Message, message, DateTime.UtcNow);
+                        break;
+                    default:
+                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                        message = "Internal server error";
+                        _logger.LogError(exception.Message, message, DateTime.UtcNow);
+                        break;
                 }
 
 

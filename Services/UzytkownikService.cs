@@ -1,6 +1,9 @@
-﻿using krzysztofb.Models;
+﻿using krzysztofb.CustomExceptions;
+using krzysztofb.Models;
 using krzysztofb.Models.DTO;
+using krzysztofb.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace krzysztofb.Services
 {
@@ -14,6 +17,7 @@ namespace krzysztofb.Services
         IDatabaseCreate<UzytkownikDTO>
     {
         private readonly WnioskiContext _context;
+
 
         public UzytkownikService(WnioskiContext context)
         {
@@ -30,22 +34,23 @@ namespace krzysztofb.Services
         {
             if (_context.Uzytkownik.Find(obj.IdPrzelozonego) == null)
             {
-                throw new BadHttpRequestException("Użytkownik podany za przełożonego nie istnieje");
+                throw new DatabaseValidationException("Użytkownik podany za przełożonego nie istnieje");
             }
             else if (_context.Uzytkownik.Find(obj.IdPrzelozonego).Role != 2)
             {
-                throw new BadHttpRequestException("Użytkownik podany za przełożonego nie jest kierownikiem");
+                throw new DatabaseValidationException("Użytkownik podany za przełożonego nie istnieje");
             }
             else if (_context.Role.Find(obj.Role) == null)
             {
-                throw new BadHttpRequestException("Podana rola nie istnieje");
+                throw new DatabaseValidationException("Podana rola nie istnieje");
             }
             else if (_context.Uzytkownik.FirstOrDefault(x => x.Email == obj.Email) != null)
             {
-                throw new DbUpdateException("Podany email już istnieje w bazie danych");
+                throw new DatabaseValidationException("Podany email już istnieje w bazie danych");
             }
             _context.Uzytkownik.Add(ModelConverter.ConvertToModel(obj));
             _context.SaveChanges();
+
             return obj;
         }
         /// <summary>
@@ -59,9 +64,10 @@ namespace krzysztofb.Services
             var user = _context.Uzytkownik.Find(id);
             if (user == null)
             {
-                throw new BadHttpRequestException("Użytkownik o podanym id nie istnieje");
+                throw new DatabaseValidationException("Użytkownik id: " + id + " nie istnieje");
             }
             _context.Uzytkownik.Remove(user);
+
             return ModelConverter.ConvertToDTO(user);
         }
         /// <summary>
@@ -75,6 +81,7 @@ namespace krzysztofb.Services
                .Include(x => x.IdPrzelozonegoNavigation)
                .Include(x => x.RoleNavigation)
                .Select(x => ModelConverter.ConvertToDTO(x));
+
             return user
                .ToList();
         }
@@ -88,12 +95,13 @@ namespace krzysztofb.Services
         {
             if (_context.Uzytkownik.Find(id) == null)
             {
-                throw new NullReferenceException("Użytkownik o podanym id nie istnieje");
+                throw new DatabaseValidationException("Użytkownik id: " + id + " nie istnieje");
             }
             var user = _context.Uzytkownik
                 .Include(x => x.IdPrzelozonegoNavigation)
                 .Include(x => x.RoleNavigation)
                 .FirstOrDefault(x => x.Id == id);
+
             return ModelConverter.ConvertToDTO(user);
         }
 
@@ -109,23 +117,27 @@ namespace krzysztofb.Services
         {
             if (_context.Uzytkownik.Find(id) == null)
             {
-                throw new BadHttpRequestException("Użytkownik o podanym id nie istnieje");
+                throw new DatabaseValidationException("Użytkownik o id: " + id + " nie istnieje");
             }
-            else if (_context.Uzytkownik.Find(obj.IdPrzelozonego) == null)
+            else if (_context.Uzytkownik.Find(obj.IdPrzelozonego) == null && obj.IdPrzelozonego.HasValue)
             {
-                throw new BadHttpRequestException("Użytkownik podany za przełożonego nie istnieje");
+                throw new DatabaseValidationException("Użytkownik o id: " + obj.IdPrzelozonego + " podany za przełożonego nie istnieje");
             }
-            else if (_context.Uzytkownik.Find(obj.IdPrzelozonego).Role != 2)
+            else if (obj.IdPrzelozonego.HasValue)
             {
-                throw new BadHttpRequestException("Użytkownik podany za przełożonego nie jest kierownikiem");
+                if (_context.Uzytkownik.Find(obj.IdPrzelozonego).Role != 2)
+                {
+                    throw new DatabaseValidationException("Użytkownik o id: " + obj.IdPrzelozonego + " podany za przełożonego nie jest kierownikiem");
+                }
+
             }
-            else if (_context.Role.Find(obj.Role) == null)
+            else if (_context.Role.Find(obj.Role) == null && obj.Role.HasValue)
             {
-                throw new BadHttpRequestException("Podana rola nie istnieje");
+                throw new DatabaseValidationException("Podana rola o id: " + obj.Role + " nie istnieje");
             }
-            else if (_context.Uzytkownik.FirstOrDefault(x => x.Email == obj.Email) != null)
+            else if (_context.Uzytkownik.FirstOrDefault(x => x.Email == obj.Email) != null && !obj.Email.IsNullOrEmpty())
             {
-                throw new DbUpdateException("Podany email już istnieje w bazie danych");
+                throw new DatabaseValidationException("Podany email: " + obj.Email + " już istnieje w bazie danych");
             }
             var user = _context.Uzytkownik.Find(id);
 
@@ -133,10 +145,12 @@ namespace krzysztofb.Services
             {
                 if (propetryEntry.Metadata.Name != "Id")
                 {
-                    propetryEntry.CurrentValue = obj.GetType().GetProperty(propetryEntry.Metadata.Name).GetValue(obj);
+                    if (obj.GetType().GetProperty(propetryEntry.Metadata.Name).GetValue(obj) != null)
+                        propetryEntry.CurrentValue = obj.GetType().GetProperty(propetryEntry.Metadata.Name).GetValue(obj);
                 }
             }
             _context.SaveChanges();
+
             return obj;
 
         }

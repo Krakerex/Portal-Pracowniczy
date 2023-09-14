@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace krzysztofb.Models;
-/// <summary>
-/// Model użytkownika
-/// </summary>
+
 [Index("Email", Name = "UQ__Uzytkown__A9D10534D16A30AB", IsUnique = true)]
 public partial class Uzytkownik
 {

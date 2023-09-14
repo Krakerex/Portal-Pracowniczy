@@ -1,9 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace krzysztofb.Models;
-/// <summary>
-/// Context bazy danych
-/// </summary>
+
 public partial class WnioskiContext : DbContext
 {
     public WnioskiContext()
