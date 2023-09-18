@@ -1,35 +1,43 @@
-﻿using krzysztofb.Converters;
+﻿using krzysztofb.Authorization;
+using krzysztofb.Converters;
 using krzysztofb.CustomExceptions;
 using krzysztofb.Email;
 using krzysztofb.Models;
 using krzysztofb.Models.DTO;
 using krzysztofb.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
-namespace krzysztofb.Services
+namespace krzysztofb.Services.Services
 {
     /// <summary>
     /// Service służący do obsługi wniosków
     /// </summary>
     public class WniosekService :
-        IDatabaseDelete<WniosekDTO>,
+        //IDatabaseDelete<WniosekDTO>,
         IDatabaseFileSave<WniosekDTO>,
         IPdfToDatabaseCreate<Wniosek>,
-        IDatabaseFileRead
+        IDatabaseFileRead,
+        IDatabaseDelete<WniosekDTO>,
+        IDatabaseRead<Wniosek>
     {
         private readonly WnioskiContext _context;
         private readonly MemoryStream _memoryStream;
         private readonly UzytkownikService _uzytkownikService;
+        private readonly IAuthorizationService _authorizationService;
         IEmailService _emailService = null;
-        public WniosekService(WnioskiContext context, MemoryStream memoryStream, UzytkownikService userTable, IEmailService emailService)
+
+        public WniosekService(WnioskiContext context, MemoryStream memoryStream, UzytkownikService userTable, IEmailService emailService, IAuthorizationService authorizationService)
         {
             _context = context;
             _memoryStream = memoryStream;
             _uzytkownikService = userTable;
             _emailService = emailService;
-
+            _authorizationService = authorizationService;
         }
+
         /// <summary>
         /// Metoda służąca do walidacji i dodania pliku jak pole obiektu WniosekDTO
         /// </summary>
@@ -52,6 +60,7 @@ namespace krzysztofb.Services
             wniosek.Plik = _memoryStream.ToArray();
             return wniosek;
         }
+
         /// <summary>
         /// Metoda zapisująca obiekt wniosekDTO do bazy danych
         /// </summary>
@@ -85,15 +94,21 @@ namespace krzysztofb.Services
             _context.Entry(entry.Entity).GetDatabaseValues();
             return entry.Entity;
         }
+
         /// <summary>
         /// Metoda walidująca i usuwająca wniosek o podanym id
         /// </summary>
         /// <param name="id">Id wniosku do usunięcia</param>
         /// <returns>Usunięty wniosek</returns>
         /// <exception cref="BadHttpRequestException"></exception>
-        public WniosekDTO Delete(int id)
+        public WniosekDTO Delete(int id, ClaimsPrincipal user)
         {
             var wniosek = _context.Wniosek.Find(id);
+            var authorizationResult = _authorizationService.AuthorizeAsync(user, wniosek, new OwnershipRequirement(wniosek.IdOsobyZglaszajacej.Value)).Result;
+            if (!authorizationResult.Succeeded)
+            {
+                throw new DatabaseValidationException("Nie masz uprawnień do usunięcia tego wniosku");
+            }
             if (wniosek == null)
             {
                 throw new DatabaseValidationException("Wniosek do usunięcia nie znaleziony");
@@ -103,6 +118,7 @@ namespace krzysztofb.Services
             _context.SaveChanges();
             return ModelConverter.ConvertToDTO(wniosek);
         }
+
         /// <summary>
         /// Metoda wczytująca wszystkie wnioski z bazy danych do listy
         /// </summary>
@@ -114,9 +130,14 @@ namespace krzysztofb.Services
                .Include(x => x.IdOsobyAkceptujacejNavigation)
                .Include(x => x.IdOsobyZglaszajacejNavigation)
                .Select(x => x);
+            foreach (var wniosek in wnioski)
+            {
+                wniosek.Plik = null;
+            }
             return wnioski
                .ToList();
         }
+
         /// <summary>
         /// Metoda walidująca i zmieniająca status wniosku na zaakceptowany
         /// </summary>
@@ -124,7 +145,7 @@ namespace krzysztofb.Services
         /// <param name="idKierownik">Id kierownika akceptującego wniosek</param>
         /// <returns>Zaakceptowany WniosekDTO</returns>
         /// <exception cref="BadHttpRequestException"></exception>
-        public WniosekDTO Accept(int idWniosek, int idKierownik)
+        public async void Accept(int idWniosek, int idKierownik)
         {
             //check if user with idKierownik has role Kierownik
             var wniosek = _context.Wniosek.Find(idWniosek);
@@ -154,9 +175,8 @@ namespace krzysztofb.Services
             EmailDataWniosekUrlop email = EmailDataWniosekUrlop.BuildMail(wniosek, osobaZglaszajaca, osobaAkceptujaca, przelozony, attachments);
             _emailService.SendEmailWithAttachment(email);
             _context.SaveChanges();
-
-            return ModelConverter.ConvertToDTO(wniosek);
         }
+
         /// <summary>
         /// Metoda walidująca i wczytująca plik z wniosku o podanym id
         /// </summary>
@@ -179,6 +199,22 @@ namespace krzysztofb.Services
             };
             return file;
         }
+
+        public Wniosek Read(int id)
+        {
+            if (_context.Wniosek.Find(id) == null)
+            {
+                throw new DatabaseValidationException("Wniosek id: " + id + " nie istnieje");
+            }
+            //read wniosek from database
+            var wniosek = _context.Wniosek
+                .Include(x => x.IdOsobyAkceptujacejNavigation)
+                .Include(x => x.IdOsobyZglaszajacejNavigation)
+                .FirstOrDefault(x => x.Id == id);
+
+            return wniosek;
+        }
+
         /// <summary>
         /// Metoda pobierająca plik z wnioskiem na podstawie id
         /// </summary>
@@ -186,7 +222,6 @@ namespace krzysztofb.Services
         /// <returns>FileResult pliku do pobrania</returns>
         public FileResult DownloadFile(int id)
         {
-
             byte[] file;
             var wniosek = ReadFile(id);
             using (MemoryStream memoryStream = new MemoryStream())
