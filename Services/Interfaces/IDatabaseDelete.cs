@@ -1,6 +1,4 @@
-﻿using System.Security.Claims;
-
-namespace krzysztofb.Services.Interfaces
+﻿namespace krzysztofb.Services.Interfaces
 {
     /// <summary>
     /// Interfejs zawierający metodę usuwającą obiekt z bazy danych
@@ -13,6 +11,6 @@ namespace krzysztofb.Services.Interfaces
         /// </summary>
         /// <param name="id">id usuwanego obiektu</param>
         /// <returns>Usunięty obiekt</returns>
-        public T Delete(int id, ClaimsPrincipal user);
+        public T Delete(int id);
     }
 }

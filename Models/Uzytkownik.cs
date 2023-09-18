@@ -29,9 +29,6 @@ public partial class Uzytkownik
     [Column("Id_Przelozonego")]
     public int? IdPrzelozonego { get; set; }
 
-    [Unicode(false)]
-    public string? PasswordHash { get; set; }
-
     [ForeignKey("IdPrzelozonego")]
     [InverseProperty("InverseIdPrzelozonegoNavigation")]
     public virtual Uzytkownik? IdPrzelozonegoNavigation { get; set; }
