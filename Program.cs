@@ -1,9 +1,11 @@
 using krzysztofb.Authentication;
+using krzysztofb.Authorization;
 using krzysztofb.Configuration;
 using krzysztofb.Email;
 using krzysztofb.Models;
-using krzysztofb.Services;
 using krzysztofb.Services.Request.Exceptions;
+using krzysztofb.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
@@ -39,9 +41,13 @@ builder.Services.AddAuthentication(o =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authenticationSettings.JwtKey))
     };
 });
+builder.Services.AddAuthorization(options =>
+{
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<WnioskiContext>();
+builder.Services.AddScoped<IAuthorizationHandler, OwnershipRequirementHandler>();
 builder.Services.AddScoped<UzytkownikService>();
 builder.Services.AddScoped<WniosekService>();
 builder.Services.AddScoped<MemoryStream>();
@@ -66,7 +72,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseResponseCaching();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

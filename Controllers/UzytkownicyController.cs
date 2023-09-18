@@ -1,6 +1,6 @@
 ﻿using krzysztofb.Models;
 using krzysztofb.Models.DTO;
-using krzysztofb.Services;
+using krzysztofb.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
@@ -18,13 +18,6 @@ namespace krzysztofb.Controllers
         public UzytkownicyController(WnioskiContext context, UzytkownikService uzytkownikService)
         {
             _uzytkownikService = uzytkownikService;
-        }
-
-        [HttpPost("login")]
-        public IActionResult Login(UzytkownikLoginDTO uzytkownik)
-        {
-            var token = _uzytkownikService.Login(uzytkownik);
-            return Ok(token);
         }
 
         /// <summary>
@@ -87,7 +80,7 @@ namespace krzysztofb.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteUzytkownik(int id)
         {
-            return Ok(_uzytkownikService.Delete(id));
+            return Ok(_uzytkownikService.Delete(id, User));
         }
     }
 }

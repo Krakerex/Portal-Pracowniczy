@@ -1,34 +1,41 @@
-﻿using krzysztofb.Converters;
+﻿using krzysztofb.Authorization;
+using krzysztofb.Converters;
 using krzysztofb.CustomExceptions;
 using krzysztofb.Email;
 using krzysztofb.Models;
 using krzysztofb.Models.DTO;
 using krzysztofb.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
-namespace krzysztofb.Services
+namespace krzysztofb.Services.Services
 {
     /// <summary>
     /// Service służący do obsługi wniosków
     /// </summary>
     public class WniosekService :
-        IDatabaseDelete<WniosekDTO>,
+        //IDatabaseDelete<WniosekDTO>,
         IDatabaseFileSave<WniosekDTO>,
         IPdfToDatabaseCreate<Wniosek>,
-        IDatabaseFileRead
+        IDatabaseFileRead,
+        IDatabaseDelete<WniosekDTO>,
+        IDatabaseRead<Wniosek>
     {
         private readonly WnioskiContext _context;
         private readonly MemoryStream _memoryStream;
         private readonly UzytkownikService _uzytkownikService;
+        private readonly IAuthorizationService _authorizationService;
         IEmailService _emailService = null;
 
-        public WniosekService(WnioskiContext context, MemoryStream memoryStream, UzytkownikService userTable, IEmailService emailService)
+        public WniosekService(WnioskiContext context, MemoryStream memoryStream, UzytkownikService userTable, IEmailService emailService, IAuthorizationService authorizationService)
         {
             _context = context;
             _memoryStream = memoryStream;
             _uzytkownikService = userTable;
             _emailService = emailService;
+            _authorizationService = authorizationService;
         }
 
         /// <summary>
@@ -94,9 +101,14 @@ namespace krzysztofb.Services
         /// <param name="id">Id wniosku do usunięcia</param>
         /// <returns>Usunięty wniosek</returns>
         /// <exception cref="BadHttpRequestException"></exception>
-        public WniosekDTO Delete(int id)
+        public WniosekDTO Delete(int id, ClaimsPrincipal user)
         {
             var wniosek = _context.Wniosek.Find(id);
+            var authorizationResult = _authorizationService.AuthorizeAsync(user, wniosek, new OwnershipRequirement(wniosek.IdOsobyZglaszajacej.Value)).Result;
+            if (!authorizationResult.Succeeded)
+            {
+                throw new DatabaseValidationException("Nie masz uprawnień do usunięcia tego wniosku");
+            }
             if (wniosek == null)
             {
                 throw new DatabaseValidationException("Wniosek do usunięcia nie znaleziony");
@@ -118,6 +130,10 @@ namespace krzysztofb.Services
                .Include(x => x.IdOsobyAkceptujacejNavigation)
                .Include(x => x.IdOsobyZglaszajacejNavigation)
                .Select(x => x);
+            foreach (var wniosek in wnioski)
+            {
+                wniosek.Plik = null;
+            }
             return wnioski
                .ToList();
         }
@@ -182,6 +198,21 @@ namespace krzysztofb.Services
                 ContentDisposition = "attachment"
             };
             return file;
+        }
+
+        public Wniosek Read(int id)
+        {
+            if (_context.Wniosek.Find(id) == null)
+            {
+                throw new DatabaseValidationException("Wniosek id: " + id + " nie istnieje");
+            }
+            //read wniosek from database
+            var wniosek = _context.Wniosek
+                .Include(x => x.IdOsobyAkceptujacejNavigation)
+                .Include(x => x.IdOsobyZglaszajacejNavigation)
+                .FirstOrDefault(x => x.Id == id);
+
+            return wniosek;
         }
 
         /// <summary>

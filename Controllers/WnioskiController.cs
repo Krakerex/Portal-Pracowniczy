@@ -1,4 +1,4 @@
-﻿using krzysztofb.Services;
+﻿using krzysztofb.Services.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -10,6 +10,7 @@ namespace krzysztofb.Controllers
     /// </summary>
     [Route("api/wnioski")]
     [ApiController]
+    [ResponseCache(Duration = 1200)]
     public class WnioskiController : ControllerBase
     {
         private readonly WniosekService _wniosekServices;
@@ -37,10 +38,16 @@ namespace krzysztofb.Controllers
         /// <param name="id">id wniosku który chcemy pobrać</param>
         /// <returns>FileResult pliku pobranego z bazy danych</returns>
         // GET: api/Wnioski/5
-        [HttpGet("{id}")]
-        public FileResult GetWniosek(int id)
+        [HttpGet("download/{id}")]
+        public FileResult DownloadWniosek(int id)
         {
             return _wniosekServices.DownloadFile(id);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetWniosek(int id)
+        {
+            return Ok(_wniosekServices.Read(id));
         }
 
         /// <summary>
@@ -83,7 +90,7 @@ namespace krzysztofb.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteWniosek(int id)
         {
-            return Ok(_wniosekServices.Delete(id));
+            return Ok(_wniosekServices.Delete(id, User));
         }
     }
 }
