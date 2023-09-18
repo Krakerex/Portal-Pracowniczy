@@ -1,6 +1,6 @@
 ﻿using krzysztofb.Models;
 using krzysztofb.Models.DTO;
-using krzysztofb.Services;
+using krzysztofb.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
@@ -14,10 +14,12 @@ namespace krzysztofb.Controllers
     public class UzytkownicyController : ControllerBase
     {
         private readonly UzytkownikService _uzytkownikService;
+
         public UzytkownicyController(WnioskiContext context, UzytkownikService uzytkownikService)
         {
             _uzytkownikService = uzytkownikService;
         }
+
         /// <summary>
         /// Metoda zwracająca listę użytkowników UżytkownikDTO
         /// </summary>
@@ -28,6 +30,7 @@ namespace krzysztofb.Controllers
         {
             return Ok(_uzytkownikService.Read());
         }
+
         /// <summary>
         /// Metoda zwracająca użytkownika na podstawie id
         /// </summary>
@@ -39,6 +42,7 @@ namespace krzysztofb.Controllers
         {
             return Ok(_uzytkownikService.Read(id));
         }
+
         /// <summary>
         /// Metoda służąca do aktualizacji użytkownika
         /// </summary>
@@ -48,12 +52,12 @@ namespace krzysztofb.Controllers
         // PUT: api/Uzytkowniks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-
         public IActionResult PutUzytkownik(int id, [ValidateNever] UzytkownikDTO uzytkownik)
         {
             UzytkownikDTO uzytkownikDTO = _uzytkownikService.Update(id, uzytkownik);
             return Ok(uzytkownikDTO);
         }
+
         /// <summary>
         /// Metoda służąca do dodawania użytkownika do bazy danych
         /// </summary>
@@ -62,13 +66,11 @@ namespace krzysztofb.Controllers
         // POST: api/Uzytkowniks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public IActionResult PostUzytkownik(UzytkownikDTO uzytkownik)
+        public IActionResult PostUzytkownik(UzytkownikCreateDTO uzytkownik)
         {
-
-
             return Ok(_uzytkownikService.Create(uzytkownik));
-
         }
+
         /// <summary>
         /// Metoda służąca do usuwania użytkownika z bazy danych
         /// </summary>
@@ -78,7 +80,7 @@ namespace krzysztofb.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteUzytkownik(int id)
         {
-            return Ok(_uzytkownikService.Delete(id));
+            return Ok(_uzytkownikService.Delete(id, User));
         }
     }
 }

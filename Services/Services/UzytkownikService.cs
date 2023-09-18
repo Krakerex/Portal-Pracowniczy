@@ -1,11 +1,15 @@
-﻿using krzysztofb.CustomExceptions;
+﻿using krzysztofb.Authorization;
+using krzysztofb.CustomExceptions;
 using krzysztofb.Models;
 using krzysztofb.Models.DTO;
 using krzysztofb.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
-namespace krzysztofb.Services
+namespace krzysztofb.Services.Services
 {
     /// <summary>
     /// Service służący do obsługi użytkowników
@@ -14,15 +18,19 @@ namespace krzysztofb.Services
         IDatabaseRead<UzytkownikDTO>,
         IDatabaseUpdate<UzytkownikDTO>,
         IDatabaseDelete<UzytkownikDTO>,
-        IDatabaseCreate<UzytkownikDTO>
+        IDatabaseCreate<UzytkownikCreateDTO, UzytkownikDTO>
     {
         private readonly WnioskiContext _context;
+        private readonly IPasswordHasher<Uzytkownik> _passwordHasher;
+        private readonly IAuthorizationService _authorizationService;
 
-
-        public UzytkownikService(WnioskiContext context)
+        public UzytkownikService(WnioskiContext context, IPasswordHasher<Uzytkownik> passwordHasher, IAuthorizationService authorizationService)
         {
             _context = context;
+            _passwordHasher = passwordHasher;
+            _authorizationService = authorizationService;
         }
+
         /// <summary>
         /// Metoda służąca do walidacji i dodawania użytkownika do bazy danych
         /// </summary>
@@ -30,7 +38,7 @@ namespace krzysztofb.Services
         /// <returns>Dodany UżytkownikDTO</returns>
         /// <exception cref="BadHttpRequestException"></exception>
         /// <exception cref="DbUpdateException"></exception>
-        public UzytkownikDTO Create(UzytkownikDTO obj)
+        public UzytkownikDTO Create(UzytkownikCreateDTO obj)
         {
             if (_context.Uzytkownik.Find(obj.IdPrzelozonego) == null)
             {
@@ -48,28 +56,37 @@ namespace krzysztofb.Services
             {
                 throw new DatabaseValidationException("Podany email już istnieje w bazie danych");
             }
-            _context.Uzytkownik.Add(ModelConverter.ConvertToModel(obj));
+            var password = _passwordHasher.HashPassword(ModelConverter.ConvertToModel(obj), obj.Password);
+            obj.Password = password;
+            var created = _context.Uzytkownik.Add(ModelConverter.ConvertToModel(obj));
             _context.SaveChanges();
 
-            return obj;
+            return ModelConverter.ConvertToDTO(obj, created.Entity.Id);
         }
+
         /// <summary>
         /// Metoda służąca do walidacji i usuwania użytkownika z bazy danych
         /// </summary>
         /// <param name="id"></param>
         /// <returns>Usunięty UżytkownikDTO</returns>
         /// <exception cref="BadHttpRequestException"></exception>
-        public UzytkownikDTO Delete(int id)
+        public UzytkownikDTO Delete(int id, ClaimsPrincipal user)
         {
-            var user = _context.Uzytkownik.Find(id);
-            if (user == null)
+            var userRecord = _context.Uzytkownik.Find(id);
+            var authorizationResult = _authorizationService.AuthorizeAsync(user, userRecord, new OwnershipRequirement(userRecord.Id)).Result;
+            if (!authorizationResult.Succeeded)
+            {
+                throw new DatabaseValidationException("Nie masz uprawnień do usunięcia tego wniosku");
+            }
+            if (userRecord == null)
             {
                 throw new DatabaseValidationException("Użytkownik id: " + id + " nie istnieje");
             }
-            _context.Uzytkownik.Remove(user);
+            _context.Uzytkownik.Remove(userRecord);
 
-            return ModelConverter.ConvertToDTO(user);
+            return ModelConverter.ConvertToDTO(userRecord);
         }
+
         /// <summary>
         /// Metoda służąca do wczytania użytkowników z bazy danych do listy
         /// </summary>
@@ -85,6 +102,7 @@ namespace krzysztofb.Services
             return user
                .ToList();
         }
+
         /// <summary>
         /// Metoda służąca do walidacji i odczytania użytkownika o podanym id
         /// </summary>
@@ -129,7 +147,6 @@ namespace krzysztofb.Services
                 {
                     throw new DatabaseValidationException("Użytkownik o id: " + obj.IdPrzelozonego + " podany za przełożonego nie jest kierownikiem");
                 }
-
             }
             else if (_context.Role.Find(obj.Role) == null && obj.Role.HasValue)
             {
@@ -152,7 +169,6 @@ namespace krzysztofb.Services
             _context.SaveChanges();
 
             return obj;
-
         }
     }
 }
